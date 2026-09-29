@@ -101,9 +101,8 @@ pre code { background: transparent; padding: 0; color: inherit; }
 }
 .marca { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
 .marca img:first-child { width: 36px; height: 36px; border-radius: 9px; }
-.marca .wordmark { height: 28px; width: auto; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .wordmark, :root:not([data-theme="light"]) .rodape img { content: url("assets/wordmark-light.png"); } }
-:root[data-theme="dark"] .wordmark, :root[data-theme="dark"] .rodape img { content: url("assets/wordmark-light.png"); }
+/* O logotipo do tema escuro vem por <picture>; nunca por content:url() em <img>, que o Safari iOS renderiza no tamanho natural e alarga a página. */
+.marca .wordmark { height: 28px; width: auto; max-width: 140px; }
 .menu { display: flex; gap: 22px; font-size: 0.95rem; }
 .menu a { color: var(--texto); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
 .menu a:hover, .menu a:focus-visible { border-bottom-color: var(--realce); color: var(--texto); }
@@ -244,7 +243,7 @@ main > section { padding: 72px max(16px, calc((100% - var(--largura)) / 2)); }
 
 /* Rodapé */
 .rodape { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; padding: 40px max(16px, calc((100% - var(--largura)) / 2)) 56px; border-top: 1px solid var(--linha); font-size: 0.92rem; color: var(--texto-suave); }
-.rodape img { height: 26px; width: auto; margin-bottom: 12px; }
+.rodape img { height: 26px; width: auto; max-width: 140px; margin-bottom: 12px; }
 .rodape ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; }
 
 @media (max-width: 560px) {
