@@ -2,14 +2,14 @@
 window.WAXTRAIL_RELEASES = {
   repo: "iamcalegari/waxtrail-site",
   current: {
-    version: "2.0.1",
-    tag: "v2.0.1",
+    version: "2.1.0",
+    tag: "v2.1.0",
     date: "2026-09-29",
     assets: [
-      { os: "linux", arch: "x86_64", label: "Linux x86_64", file: "Waxtrail-2.0.1-linux-x86_64.tar.gz", kind: "tar.gz", note: "Pasta autocontida com Python e Qt. Extraia e execute." },
-      { os: "windows", arch: "x64", label: "Windows 10/11 64 bits", file: "Waxtrail-2.0.1-windows-x64.zip", kind: "zip", note: "Extraia e abra Waxtrail.exe. Sem instalador, sem registro.", pending: "Pacote em preparação: a versão para Windows sai na próxima execução da CI. Enquanto isso, use a versão 1.0.1 ou rode a partir do código." },
-      { os: "macos", arch: "arm64", label: "macOS Apple Silicon", file: "Waxtrail-2.0.0-macos-arm64.dmg", kind: "dmg", tag: "v2.0.0", version: "2.0.0", note: "M1 ou mais novo. Arraste para Aplicativos. Pacote da 2.0.0; a 2.0.1 para macOS sai na próxima execução da CI." },
-      { os: "macos", arch: "x64", label: "macOS Intel", file: "Waxtrail-2.0.0-macos-x64.dmg", kind: "dmg", tag: "v2.0.0", version: "2.0.0", note: "Macs com processador Intel. Pacote da 2.0.0; a 2.0.1 para macOS sai na próxima execução da CI." }
+      { os: "linux", arch: "x86_64", label: "Linux x86_64", file: "Waxtrail-2.1.0-linux-x86_64.tar.gz", kind: "tar.gz", note: "Pasta autocontida com Python e Qt. Extraia e execute." },
+      { os: "windows", arch: "x64", label: "Windows 10/11 64 bits", file: "Waxtrail-2.1.0-windows-x64.zip", kind: "zip", note: "Extraia e abra Waxtrail.exe. Sem instalador, sem registro.", pending: "Pacote em preparação: a versão para Windows sai na próxima execução da CI. Enquanto isso, use a versão 1.0.1 ou rode a partir do código." },
+      { os: "macos", arch: "arm64", label: "macOS Apple Silicon", file: "Waxtrail-2.0.0-macos-arm64.dmg", kind: "dmg", tag: "v2.0.0", version: "2.0.0", note: "M1 ou mais novo. Arraste para Aplicativos. Pacote da 2.0.0; a 2.1.0 para macOS sai na próxima execução da CI." },
+      { os: "macos", arch: "x64", label: "macOS Intel", file: "Waxtrail-2.0.0-macos-x64.dmg", kind: "dmg", tag: "v2.0.0", version: "2.0.0", note: "Macs com processador Intel. Pacote da 2.0.0; a 2.1.0 para macOS sai na próxima execução da CI." }
     ],
     checksums: "SHA256SUMS.txt"
   },
