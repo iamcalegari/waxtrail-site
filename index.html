@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
-  <link rel="stylesheet" href="styles.css?v=2.1.0c">
+  <link rel="stylesheet" href="styles.css?v=2.1.1">
 </head>
 <body>
   <a class="skip" href="#conteudo">Ir para o conteúdo</a>
@@ -201,17 +201,17 @@
       </div>
       <div class="painel" role="tabpanel" id="inst-linux" aria-labelledby="aba-linux">
         <p><strong>Arch Linux e derivados (CachyOS, EndeavourOS, Manjaro):</strong> baixe o pacote e instale com o pacman. Se o Waxtrail 1.x estiver instalado, ele é substituído.</p>
-        <pre><code>sudo pacman -U ./waxtrail-2.1.0-1-x86_64.pkg.tar.zst</code></pre>
+        <pre><code>sudo pacman -U ./waxtrail-2.1.1-1-x86_64.pkg.tar.zst</code></pre>
         <p><strong>Debian 12, Ubuntu 22.04 ou mais novos e derivados:</strong> o apt instala o pacote e as dependências.</p>
-        <pre><code>sudo apt install ./Waxtrail-2.1.0-linux-amd64.deb</code></pre>
+        <pre><code>sudo apt install ./Waxtrail-2.1.1-linux-amd64.deb</code></pre>
         <p><strong>Outras distribuições:</strong> extraia o <code>.tar.gz</code> em uma pasta sua e execute <code>Waxtrail/Waxtrail</code>; a pasta <code>_internal</code> precisa continuar ao lado do executável. Precisa de x86_64 com glibc 2.35 ou mais recente e sessão Wayland ou X11.</p>
-        <pre><code>tar -xzf Waxtrail-2.1.0-linux-x86_64.tar.gz
+        <pre><code>tar -xzf Waxtrail-2.1.1-linux-x86_64.tar.gz
 ./Waxtrail/Waxtrail</code></pre>
         <p>Depois de instalar, o Waxtrail aparece no menu de aplicativos com o ícone novo. FFmpeg/FFprobe do sistema são usados quando existem; caso contrário, Ajustes oferece uma versão fixada.</p>
       </div>
       <div class="painel" role="tabpanel" id="inst-windows" aria-labelledby="aba-windows" hidden>
         <ol>
-          <li>Execute o instalador <code>Waxtrail-2.1.0-windows-x64-setup.exe</code>: ele instala na sua conta de usuário, cria o atalho no menu Iniciar e o desinstalador. Windows 10 ou 11, 64 bits. Quem preferir sem instalar pode extrair o <code>.zip</code> e abrir <code>Waxtrail\Waxtrail.exe</code>.</li>
+          <li>Execute o instalador <code>Waxtrail-2.1.1-windows-x64-setup.exe</code>: ele instala na sua conta de usuário, cria o atalho no menu Iniciar e o desinstalador. Windows 10 ou 11, 64 bits. Quem preferir sem instalar pode extrair o <code>.zip</code> e abrir <code>Waxtrail\Waxtrail.exe</code>.</li>
           <li>Na primeira abertura o SmartScreen pode avisar que o editor é desconhecido: clique em <strong>Mais informações</strong> e depois em <strong>Executar assim mesmo</strong>. O instalador não é assinado.</li>
           <li>FFmpeg, yt-dlp e sockseek são instalados pelo próprio aplicativo em Ajustes, com o SHA256 conferido antes do uso.</li>
         </ol>
@@ -227,7 +227,7 @@
       <div class="requisitos">
         <h3>O que você precisa ter</h3>
         <ul>
-          <li><strong>Uma conta Soulseek.</strong> É gratuita: o botão <em>Testar conexão</em> em Ajustes registra um nome que esteja livre. Use uma senha exclusiva; o protocolo não cifra o login.</li>
+          <li><strong>Uma conta Soulseek.</strong> É gratuita e dá para criar dentro do Waxtrail: em Ajustes › Soulseek › <em>Criar uma conta Soulseek</em>, o validador confere o nome e o servidor registra a conta no primeiro login. Quem já tem conta só salva e testa a conexão. Use uma senha exclusiva; o protocolo não cifra o login.</li>
           <li><strong>Conexão com a internet</strong> para ler playlists públicas, baixar prévias e buscar arquivos.</li>
           <li><strong>sockseek</strong>, o cliente de linha de comando que faz a busca e o download no Soulseek. O diálogo de busca instala a versão fixada quando ela ainda não existe.</li>
         </ul>
@@ -301,7 +301,7 @@
     </ul>
   </footer>
 
-  <script src="releases.js?v=2.1.0c"></script>
-  <script src="app.js?v=2.1.0c"></script>
+  <script src="releases.js?v=2.1.1"></script>
+  <script src="app.js?v=2.1.1"></script>
 </body>
 </html>
