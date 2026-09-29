@@ -42,11 +42,11 @@
         : "Escolha o pacote do seu sistema na lista abaixo.";
       return;
     }
-    link.href = assetUrl(tag, match.file);
+    link.href = assetUrl(match.tag || tag, match.file);
     link.removeAttribute("data-download-primary");
-    label.textContent = `Baixar para ${match.label} · ${version}`;
+    label.textContent = `Baixar para ${match.label} · ${match.version || version}`;
     const alt = detected.ambiguous ? assets.find(a => a.os === "macos" && a.arch !== match.arch) : null;
-    note.innerHTML = `${escape(match.file)}${alt ? ` · Mac com Intel? <a href="${assetUrl(tag, alt.file)}">baixe a versão Intel</a>.` : ""} · <a href="${assetUrl(tag, data.current.checksums)}">SHA256SUMS</a>`;
+    note.innerHTML = `${escape(match.file)}${alt ? ` · Mac com Intel? <a href="${assetUrl(alt.tag || tag, alt.file)}">baixe a versão Intel</a>.` : ""} · <a href="${assetUrl(match.tag || tag, data.current.checksums)}">SHA256SUMS</a>`;
   }
 
   function renderCards(detected) {
@@ -58,7 +58,7 @@
         <p class="cartao-os">${escape(osName(asset.os))}${mine ? '<span class="tag">seu sistema</span>' : ""}</p>
         <h3>${escape(asset.label)}</h3>
         <p>${escape(asset.pending || asset.note)}</p>
-        ${asset.pending ? `<span class="botao desativado" aria-disabled="true">Em preparação</span>` : `<a class="botao primario" href="${assetUrl(tag, asset.file)}">Baixar ${escape(asset.kind)}</a>`}
+        ${asset.pending ? `<span class="botao desativado" aria-disabled="true">Em preparação</span>` : `<a class="botao primario" href="${assetUrl(asset.tag || tag, asset.file)}">Baixar ${escape(asset.kind)}${asset.version ? ` · ${escape(asset.version)}` : ""}</a>`}
         <small><code>${escape(asset.file)}</code></small>
       </article>`;
     }).join("") + `<article class="cartao verificacao">
