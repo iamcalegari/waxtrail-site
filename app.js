@@ -30,6 +30,13 @@
     const link = document.querySelector("[data-download-primary]");
     const { version, tag, assets } = data.current;
     const match = assets.find(a => a.os === detected.os && (!detected.arch || a.arch === detected.arch)) || assets.find(a => a.os === detected.os);
+    if (detected.os === "linux") {
+      // O navegador não sabe a distribuição: o botão leva à lista e a nota traz os links diretos.
+      const flavors = assets.filter(a => a.os === "linux");
+      label.textContent = `Baixar para Linux · ${version}`;
+      note.innerHTML = flavors.map(a => `<a href="${assetUrl(a.tag || tag, a.file)}">${escape(a.flavor === "arch" ? "Arch (pacman)" : a.flavor === "deb" ? "Debian/Ubuntu (.deb)" : "pasta .tar.gz")}</a>`).join(" · ") + ` · <a href="${assetUrl(tag, data.current.checksums)}">SHA256SUMS</a>`;
+      return;
+    }
     if (match && match.pending) {
       label.textContent = `Waxtrail ${version} para ${osName(match.os)}: em preparação`;
       note.innerHTML = `${escape(match.pending)} <a href="#download">Ver os pacotes disponíveis</a>.`;
@@ -59,7 +66,7 @@
         <h3>${escape(asset.label)}</h3>
         <p>${escape(asset.pending || asset.note)}</p>
         ${asset.pending ? `<span class="botao desativado" aria-disabled="true">Em preparação</span>` : `<a class="botao primario" href="${assetUrl(asset.tag || tag, asset.file)}">Baixar ${escape(asset.kind)}${asset.version ? ` · ${escape(asset.version)}` : ""}</a>`}
-        <small><code>${escape(asset.file)}</code></small>
+        <small><code>${escape(asset.file)}</code>${asset.alternative ? ` · <a href="${assetUrl(asset.tag || tag, asset.alternative.file)}">${escape(asset.alternative.label)}</a>` : ""}</small>
       </article>`;
     }).join("") + `<article class="cartao verificacao">
         <p class="cartao-os">Conferência</p>

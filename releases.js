@@ -6,10 +6,12 @@ window.WAXTRAIL_RELEASES = {
     tag: "v2.1.0",
     date: "2026-09-29",
     assets: [
-      { os: "linux", arch: "x86_64", label: "Linux x86_64", file: "Waxtrail-2.1.0-linux-x86_64.tar.gz", kind: "tar.gz", note: "Pasta autocontida com Python e Qt. Extraia e execute." },
-      { os: "windows", arch: "x64", label: "Windows 10/11 64 bits", file: "Waxtrail-2.1.0-windows-x64.zip", kind: "zip", note: "Extraia e abra Waxtrail.exe. Sem instalador, sem registro." },
+      { os: "linux", arch: "x86_64", flavor: "arch", label: "Arch Linux e derivados", file: "waxtrail-2.1.0-1-x86_64.pkg.tar.zst", kind: "pacote pacman", note: "Instala em /opt/waxtrail com entrada no menu e ícones. sudo pacman -U no arquivo baixado." },
+      { os: "linux", arch: "x86_64", flavor: "deb", label: "Debian 12, Ubuntu 22.04+ e derivados", file: "Waxtrail-2.1.0-linux-amd64.deb", kind: ".deb", note: "Instala em /opt/waxtrail com entrada no menu e ícones. sudo apt install ./arquivo.deb resolve as dependências." },
+      { os: "windows", arch: "x64", label: "Windows 10/11 64 bits", file: "Waxtrail-2.1.0-windows-x64-setup.exe", kind: "instalador", note: "Instala na sua conta, com atalho no menu Iniciar e desinstalador. Sem assinatura: o SmartScreen pede confirmação.", alternative: { label: "pasta .zip sem instalador", file: "Waxtrail-2.1.0-windows-x64.zip" } },
       { os: "macos", arch: "arm64", label: "macOS Apple Silicon", file: "Waxtrail-2.1.0-macos-arm64.dmg", kind: "dmg", note: "M1 ou mais novo. Arraste para Aplicativos." },
-      { os: "macos", arch: "x64", label: "macOS Intel", file: "Waxtrail-2.1.0-macos-x64.dmg", kind: "dmg", note: "Macs com processador Intel." }
+      { os: "macos", arch: "x64", label: "macOS Intel", file: "Waxtrail-2.1.0-macos-x64.dmg", kind: "dmg", note: "Macs com processador Intel." },
+      { os: "linux", arch: "x86_64", flavor: "tar", label: "Outras distribuições Linux", file: "Waxtrail-2.1.0-linux-x86_64.tar.gz", kind: "tar.gz", note: "Pasta autocontida, sem instalar no sistema: extraia e execute Waxtrail/Waxtrail." }
     ],
     checksums: "SHA256SUMS.txt"
   },
