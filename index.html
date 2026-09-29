@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waxtrail — a versão certa de cada faixa, na melhor qualidade</title>
+  <meta name="description" content="Waxtrail é um estúdio de preparação musical para DJs: importa playlists do Spotify e do SoundCloud, encontra a versão Extended em FLAC ou WAV no Soulseek, deixa você conferir de ouvido com A/B, BPM e tom, e exporta a seleção para o set.">
+  <meta name="theme-color" content="#2b4542">
+  <meta property="og:title" content="Waxtrail — a versão certa de cada faixa, na melhor qualidade">
+  <meta property="og:description" content="Importe a playlist, baixe as faixas em Extended na melhor qualidade disponível, confira de ouvido e leve para o set.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/icon-256.png">
+  <link rel="apple-touch-icon" href="assets/icon-256.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="topo">
+    <a class="marca" href="#" aria-label="Waxtrail, início">
+      <img src="assets/icon-256.png" alt="" width="36" height="36">
+      <img class="wordmark" src="assets/wordmark.png" alt="waxtrail" height="30">
+    </a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#download">Download</a>
+      <a href="#instalacao">Instalação</a>
+      <a href="#perguntas">Perguntas</a>
+      <a class="externo" href="https://github.com/iamcalegari/waxtrail-site/releases" data-releases-link rel="noopener">Releases</a>
+    </nav>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu-movel" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <nav id="menu-movel" class="menu-movel" hidden aria-label="Seções">
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#recursos">Recursos</a>
+    <a href="#download">Download</a>
+    <a href="#instalacao">Instalação</a>
+    <a href="#perguntas">Perguntas</a>
+    <a href="https://github.com/iamcalegari/waxtrail-site/releases" data-releases-link rel="noopener">Releases</a>
+  </nav>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="hero-texto">
+        <p class="selo">Waxtrail <span data-version-badge>2.0</span> · gratuito, para DJs</p>
+        <h1>A versão certa de cada faixa, <em>na melhor qualidade</em>.</h1>
+        <p class="lead">Cole a playlist do Spotify ou do SoundCloud. O Waxtrail procura cada faixa em <strong>Extended Mix</strong>, primeiro sem perdas (FLAC, WAV, AIFF), baixa pelo Soulseek, mostra BPM e tom e deixa você conferir de ouvido antes de levar para o set.</p>
+        <div class="cta">
+          <a class="botao primario" id="download-principal" href="#download" data-download-primary>
+            <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></svg>
+            <span data-download-label>Baixar o Waxtrail</span>
+          </a>
+          <a class="botao" href="#download">Outros sistemas</a>
+        </div>
+        <p class="cta-nota" data-download-note>Detectando o seu sistema…</p>
+        <ul class="garantias" aria-label="Garantias">
+          <li>Biblioteca 100% local, sem conta no Waxtrail</li>
+          <li>Seus arquivos originais nunca são alterados</li>
+          <li>Linux, Windows e macOS</li>
+        </ul>
+      </div>
+      <figure class="hero-figura">
+        <div class="macbook" role="img" aria-label="MacBook aberto com o Waxtrail na tela">
+          <div class="macbook-tela">
+            <span class="macbook-camera" aria-hidden="true"></span>
+            <img src="assets/captura-estudio.webp" alt="Tela principal do Waxtrail: lista de faixas com fonte, duração, BPM e tom em cores, painel de conferência A/B com formas de onda e player com a forma de onda espelhada." width="1440" height="920" loading="eager" decoding="async">
+          </div>
+          <div class="macbook-base" aria-hidden="true"><span class="macbook-entalhe"></span></div>
+          <div class="macbook-sombra" aria-hidden="true"></div>
+        </div>
+        <figcaption>O Estúdio: lista da seleção, conferência A/B e o player inspirado nas lojas de música eletrônica.</figcaption>
+      </figure>
+    </section>
+
+    <section class="faixa-problema" aria-labelledby="problema-titulo">
+      <div class="conteudo-estreito">
+        <p class="rotulo">Por que existe</p>
+        <h2 id="problema-titulo">Salvar a faixa é fácil. Encontrar a versão certa em boa qualidade é o trabalho.</h2>
+        <p>Quem toca sabe: <em>Original Mix</em>, <em>Extended Mix</em> e um <em>Edit</em> qualquer não são a mesma música. Um MP3 de 128 kbps não vale um FLAC. E procurar uma a uma no cliente Soulseek, para uma playlist de trinta faixas, come uma tarde inteira. O Waxtrail nasceu para fazer essa ponte: da playlist que você já mantém para os arquivos certos, com a sua conferência no meio.</p>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="passos" aria-labelledby="como-titulo">
+      <p class="rotulo">Como funciona</p>
+      <h2 id="como-titulo">Quatro passos, do link ao set</h2>
+      <ol class="lista-passos">
+        <li>
+          <span class="numero">1</span>
+          <h3>Importe a playlist</h3>
+          <p>Cole o link público de uma playlist do Spotify ou de um set do SoundCloud. Também aceita texto, CSV e os áudios que já estão no seu computador. Capas, duração e metadados entram junto.</p>
+        </li>
+        <li>
+          <span class="numero">2</span>
+          <h3>Busque em cascata</h3>
+          <p>Para cada faixa, o Waxtrail procura no Soulseek a versão Extended sem perdas; depois com perdas a 320 kbps, se você permitir; e só então a versão disponível pelo título base. Várias faixas ao mesmo tempo, com o progresso de cada uma na lista.</p>
+        </li>
+        <li>
+          <span class="numero">3</span>
+          <h3>Confira de ouvido</h3>
+          <p>Compare a prévia oficial da fonte (A) com o arquivo obtido (B), veja as formas de onda, BPM e tom com as cores da roda Camelot. Aceite ou rejeite a versão. A decisão é sempre sua.</p>
+        </li>
+        <li>
+          <span class="numero">4</span>
+          <h3>Exporte para o set</h3>
+          <p>Gere um M3U só com as faixas aceitas e íntegras, ou um relatório CSV com tudo o que ficou pendente. Os arquivos ficam organizados na biblioteca do Waxtrail.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="recursos" class="recursos" aria-labelledby="recursos-titulo">
+      <p class="rotulo">Recursos</p>
+      <h2 id="recursos-titulo">Feito para a preparação musical, não para navegar</h2>
+      <div class="grade-recursos">
+        <article>
+          <h3>Extended primeiro, sem perdas primeiro</h3>
+          <p>Política de versão por faixa: manter a versão exata ou preferir Extended preservando remixes. A qualidade lossless tem prioridade; o formato com perdas só entra com a sua autorização explícita.</p>
+        </article>
+        <article>
+          <h3>Busca e downloads em paralelo</h3>
+          <p>Uma sessão Soulseek por camada com todas as faixas pendentes e seis trabalhos simultâneos. Cada linha mostra em tempo real: procurando, baixando «arquivo», verificando, obtido.</p>
+        </article>
+        <article>
+          <h3>BPM e tom com a roda Camelot</h3>
+          <p>Lidos das tags do arquivo ou estimados localmente (marcados como «est.»). O tom aparece como selo colorido: 8A rosa, 8B mais forte, e assim por diante, para montar transições harmônicas.</p>
+        </article>
+        <article>
+          <h3>Player inspirado no Beatport</h3>
+          <p>Capa, título com a versão em destaque, tempo, BPM e tom, forma de onda espelhada em altura cheia com o trecho tocado e o cursor em barra vertical. A/B entre referência e arquivo com um clique.</p>
+        </article>
+        <article>
+          <h3>Prévia oficial em cache</h3>
+          <p>Ao selecionar uma faixa do Spotify ou do SoundCloud, a prévia oficial vai para o cache local: toca sem streaming, mostra a forma de onda e continua disponível durante a busca.</p>
+        </article>
+        <article>
+          <h3>Colunas ordenáveis e capas</h3>
+          <p>Ordene por faixa, fonte, duração, BPM, tom ou situação. Ícones de Spotify, SoundCloud e pasta local; mini-waveform por linha; capas embutidas ou vindas da fonte.</p>
+        </article>
+        <article>
+          <h3>Biblioteca local e reversível</h3>
+          <p>Cópias gerenciadas com SHA256, exportação que revalida a integridade, remoção com desfazer. Nada sai do seu computador além das buscas que você pede.</p>
+        </article>
+        <article>
+          <h3>Ferramentas instaladas por você, verificadas pelo app</h3>
+          <p>FFmpeg, yt-dlp e sockseek são detectados no sistema ou instalados em versões fixadas, conferidas por SHA256 antes de rodar. Sem instaladores escondidos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="galeria" aria-labelledby="galeria-titulo">
+      <p class="rotulo">Telas</p>
+      <h2 id="galeria-titulo">Claro ou escuro, confortável ou compacto</h2>
+      <div class="grade-galeria">
+        <figure>
+          <div class="janela-mac"><div class="janela-barra" aria-hidden="true"><span></span><span></span><span></span></div><img src="assets/captura-selecoes.webp" alt="Tela de seleções com capas das playlists importadas." loading="lazy" decoding="async" width="1440" height="920"></div>
+          <figcaption>Seleções importadas, com capas e contagem de faixas prontas.</figcaption>
+        </figure>
+        <figure>
+          <div class="janela-mac"><div class="janela-barra" aria-hidden="true"><span></span><span></span><span></span></div><img src="assets/captura-conferencia.webp" alt="Painel de conferência com os decks A e B, formas de onda, BPM e selo de tom." loading="lazy" decoding="async" width="1440" height="920"></div>
+          <figcaption>Conferência: referência e arquivo lado a lado, com a decisão sempre à mão.</figcaption>
+        </figure>
+        <figure>
+          <div class="janela-mac"><div class="janela-barra" aria-hidden="true"><span></span><span></span><span></span></div><img src="assets/captura-claro.webp" alt="Tema claro de papel com a lista em densidade compacta." loading="lazy" decoding="async" width="1440" height="920"></div>
+          <figcaption>Tema de papel claro e densidade compacta para listas longas.</figcaption>
+        </figure>
+        <figure>
+          <div class="janela-mac"><div class="janela-barra" aria-hidden="true"><span></span><span></span><span></span></div><img src="assets/captura-busca.webp" alt="Diálogo de busca explicando a cascata de qualidade e a opção de aceitar arquivos com perdas." loading="lazy" decoding="async" width="1440" height="920"></div>
+          <figcaption>A busca explica o que vai fazer antes de começar.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="download" class="download" aria-labelledby="download-titulo">
+      <p class="rotulo">Download</p>
+      <h2 id="download-titulo">Waxtrail <span data-version-text>2.0.0</span></h2>
+      <p class="lead-secao">Escolha o pacote do seu sistema. Os arquivos são publicados nas releases do GitHub com as somas SHA256 para conferência.</p>
+      <div class="cartoes-download" data-download-cards></div>
+      <p class="nota-pequena">Os pacotes não têm assinatura comercial nem notarização: o Windows e o macOS podem pedir confirmação na primeira abertura. Veja <a href="#instalacao">Instalação</a>. As somas de verificação estão no arquivo <code>SHA256SUMS.txt</code> de cada release.</p>
+
+      <details class="v1">
+        <summary>Waxtrail 1.0.1 (geração anterior) continua disponível</summary>
+        <p>A primeira geração do Waxtrail era um aplicativo com interface web embutida e outra organização de biblioteca. Ela permanece publicada para quem já a usa. O Waxtrail 2 não migra automaticamente a biblioteca da 1.</p>
+        <ul class="lista-v1" data-v1-list></ul>
+      </details>
+    </section>
+
+    <section id="instalacao" class="instalacao" aria-labelledby="instalacao-titulo">
+      <p class="rotulo">Instalação</p>
+      <h2 id="instalacao-titulo">Do download à primeira busca</h2>
+      <div class="abas" role="tablist" aria-label="Sistema operacional">
+        <button role="tab" aria-selected="true" aria-controls="inst-linux" id="aba-linux" data-os="linux">Linux</button>
+        <button role="tab" aria-selected="false" aria-controls="inst-windows" id="aba-windows" data-os="windows" tabindex="-1">Windows</button>
+        <button role="tab" aria-selected="false" aria-controls="inst-macos" id="aba-macos" data-os="macos" tabindex="-1">macOS</button>
+      </div>
+      <div class="painel" role="tabpanel" id="inst-linux" aria-labelledby="aba-linux">
+        <ol>
+          <li>Extraia o <code>.tar.gz</code> em uma pasta sua (por exemplo <code>~/Apps</code>) e execute <code>Waxtrail/Waxtrail</code>. A pasta <code>_internal</code> precisa continuar ao lado do executável.</li>
+          <li>Precisa de sessão gráfica Wayland ou X11 e de uma distribuição x86_64 com glibc 2.35 ou mais recente (Ubuntu 22.04, Debian 12, Fedora 36, Arch e derivados).</li>
+          <li>FFmpeg/FFprobe: se já estiverem instalados pelo sistema, o Waxtrail os usa. Caso contrário, Ajustes oferece uma versão fixada.</li>
+        </ol>
+        <pre><code>tar -xzf Waxtrail-2.0.0-linux-x86_64.tar.gz
+./Waxtrail/Waxtrail</code></pre>
+      </div>
+      <div class="painel" role="tabpanel" id="inst-windows" aria-labelledby="aba-windows" hidden>
+        <ol>
+          <li>Extraia o <code>.zip</code> e abra <code>Waxtrail\Waxtrail.exe</code>. Windows 10 ou 11, 64 bits.</li>
+          <li>Na primeira abertura o SmartScreen pode avisar que o editor é desconhecido: clique em <strong>Mais informações</strong> e depois em <strong>Executar assim mesmo</strong>. O pacote não é assinado.</li>
+          <li>FFmpeg, yt-dlp e sockseek são instalados pelo próprio aplicativo em Ajustes, com o SHA256 conferido antes do uso.</li>
+        </ol>
+      </div>
+      <div class="painel" role="tabpanel" id="inst-macos" aria-labelledby="aba-macos" hidden>
+        <ol>
+          <li>Abra o <code>.dmg</code> e arraste o Waxtrail para <strong>Aplicativos</strong>. Há um pacote para Apple Silicon (M1 ou mais novo) e outro para Intel.</li>
+          <li>O app não é notarizado. Na primeira abertura, clique com o botão direito em Waxtrail, escolha <strong>Abrir</strong> e confirme. Se o macOS ainda bloquear, remova a quarentena no Terminal:</li>
+        </ol>
+        <pre><code>xattr -dr com.apple.quarantine /Applications/Waxtrail.app</code></pre>
+      </div>
+
+      <div class="requisitos">
+        <h3>O que você precisa ter</h3>
+        <ul>
+          <li><strong>Uma conta Soulseek.</strong> É gratuita: o botão <em>Testar conexão</em> em Ajustes registra um nome que esteja livre. Use uma senha exclusiva; o protocolo não cifra o login.</li>
+          <li><strong>Conexão com a internet</strong> para ler playlists públicas, baixar prévias e buscar arquivos.</li>
+          <li><strong>sockseek</strong>, o cliente de linha de comando que faz a busca e o download no Soulseek. O diálogo de busca instala a versão fixada quando ela ainda não existe.</li>
+        </ul>
+      </div>
+
+      <div class="primeiro-uso">
+        <h3>Primeira busca em cinco minutos</h3>
+        <ol>
+          <li>Em <strong>Ajustes</strong>, salve usuário e senha Soulseek e clique em <em>Testar conexão</em>.</li>
+          <li>Em <strong>Nova seleção</strong>, cole o link de uma playlist pública e mantenha <em>Preferir Extended, preservar remixes</em>.</li>
+          <li>Na seleção, clique em <strong>Buscar arquivos</strong>. Acompanhe a fase de cada faixa na lista.</li>
+          <li>Selecione uma faixa, ouça A e B, e decida com <strong>É esta versão</strong> ou <strong>Não é esta</strong>.</li>
+          <li>Exporte o <strong>M3U</strong> das faixas aceitas e abra a pasta do resultado.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="perguntas" class="perguntas" aria-labelledby="perguntas-titulo">
+      <p class="rotulo">Perguntas frequentes</p>
+      <h2 id="perguntas-titulo">O que costumam perguntar</h2>
+      <details open>
+        <summary>O Waxtrail baixa música do Spotify?</summary>
+        <p>Não. Do Spotify e do SoundCloud ele lê apenas os metadados públicos da playlist (títulos, artistas, duração, capas) e a prévia oficial de trinta segundos, usada como referência para comparar. Os arquivos vêm do Soulseek, dos seus próprios áudios ou, por escolha explícita, de um link do YouTube.</p>
+      </details>
+      <details>
+        <summary>Por que a busca insiste em «Extended»?</summary>
+        <p>Para quem toca, a versão é parte da identidade da faixa: uma Extended Mix tem intro e outro longos para mixar; um Radio Edit não. Se a Extended não existe na rede, o Waxtrail avisa e obtém a versão disponível pelo título base, deixando a decisão registrada na conferência.</p>
+      </details>
+      <details>
+        <summary>O que significa «est.» ao lado do BPM?</summary>
+        <p>Que o valor foi estimado localmente a partir do trecho central do áudio, porque o arquivo não trazia essa informação nas tags. É um indício para montar o set, não uma medição certificada.</p>
+      </details>
+      <details>
+        <summary>Onde ficam meus dados?</summary>
+        <p>Em uma pasta local (<code>~/.local/share/waxtrail-v4</code> no Linux, <code>%LOCALAPPDATA%\waxtrail-v4</code> no Windows, <code>~/Library/Application Support/waxtrail-v4</code> no macOS) com o banco SQLite, as cópias de áudio, capas, prévias e exportações. Não existe conta, servidor nem telemetria. A senha Soulseek fica em um arquivo com permissão restrita ao seu usuário.</p>
+      </details>
+      <details>
+        <summary>Isso é legal?</summary>
+        <p>O Waxtrail é uma ferramenta de organização e busca; a responsabilidade pelo uso é sua, conforme as leis do seu país. Cada faixa traz atalhos para comprar em Bandcamp e Beatport. Apoie os artistas que você toca.</p>
+      </details>
+      <details>
+        <summary>Posso continuar usando o Waxtrail 1?</summary>
+        <p>Sim. Os instaladores da 1.0.1 continuam publicados e a biblioteca antiga não é alterada pelo Waxtrail 2, que usa uma pasta própria.</p>
+      </details>
+    </section>
+
+    <section class="referencias" aria-labelledby="referencias-titulo">
+      <p class="rotulo">Referências</p>
+      <h2 id="referencias-titulo">Projetos e conceitos que o Waxtrail usa</h2>
+      <ul class="lista-referencias">
+        <li><a href="https://www.slsknet.org/" rel="noopener">Soulseek</a> — a rede de compartilhamento onde os arquivos são procurados; crie uma conta gratuita.</li>
+        <li><a href="https://github.com/fiso64/sockseek" rel="noopener">sockseek</a> — cliente Soulseek de linha de comando que executa busca e download a partir de uma lista de faixas.</li>
+        <li><a href="https://nicotine-plus.org/" rel="noopener">Nicotine+</a> — cliente gráfico Soulseek; bom para explorar a rede manualmente e para manter seus compartilhamentos.</li>
+        <li><a href="https://ffmpeg.org/" rel="noopener">FFmpeg</a> — inspeção do áudio, formas de onda e a estimativa de BPM e tom.</li>
+        <li><a href="https://github.com/yt-dlp/yt-dlp" rel="noopener">yt-dlp</a> — leitura de fontes online e prévias compatíveis.</li>
+        <li><a href="https://mixedinkey.com/harmonic-mixing-guide/" rel="noopener">Roda Camelot</a> — o sistema de notação de tons para mixagem harmônica que dá as cores da coluna «Tom».</li>
+        <li><a href="https://www.beatport.com/" rel="noopener">Beatport</a> e <a href="https://bandcamp.com/" rel="noopener">Bandcamp</a> — lojas para comprar as faixas; o layout do player segue a leitura do Beatport.</li>
+        <li><a href="https://doc.qt.io/qtforpython-6/" rel="noopener">Qt for Python</a> — a janela, o player e o motor web do aplicativo.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div>
+      <img src="assets/wordmark.png" alt="waxtrail" height="26">
+      <p>Estúdio de preparação musical, por Alan Calegari.</p>
+    </div>
+    <ul>
+      <li><a href="https://github.com/iamcalegari/waxtrail-site/releases" data-releases-link rel="noopener">Todas as releases</a></li>
+      <li><a href="https://github.com/iamcalegari/waxtrail-site/issues" data-issues-link rel="noopener">Relatar um problema</a></li>
+    </ul>
+  </footer>
+
+  <script src="releases.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
