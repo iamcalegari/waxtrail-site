@@ -1,159 +1,312 @@
 "use strict";
+/* Página do Waxtrail: detecta o sistema, monta os botões principais, os pacotes
+   de cada sistema, a conferência e a versão anterior a partir de releases.js,
+   as abas de instalação, os botões de copiar e o menu móvel. Funciona sem a API
+   do GitHub; a consulta à última release é só um extra. Sem JS (ou sem o
+   catálogo), os botões levam à lista de releases e todos os sistemas ficam à
+   vista. A Fila animada e o A/B ficam em fila-demo.js. */
 (() => {
-  const data = window.WAXTRAIL_RELEASES;
-  const repoUrl = `https://github.com/${data.repo}`;
-  const assetUrl = (tag, file) => `${repoUrl}/releases/download/${tag}/${encodeURIComponent(file)}`;
-  const escape = value => String(value ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const dados = window.WAXTRAIL_RELEASES;
+  if (!dados) return;
+  const repoUrl = `https://github.com/${dados.repo}`;
+  const urlArquivo = (tag, arquivo) => `${repoUrl}/releases/download/${tag}/${encodeURIComponent(arquivo)}`;
+  const urlNotas = (tag) => `${repoUrl}/releases/tag/${encodeURIComponent(tag)}`;
+  const escapar = (valor) =>
+    String(valor ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const todos = (seletor, raiz = document) => [...raiz.querySelectorAll(seletor)];
+  const atual = dados.current;
+  const anterior = dados.previous;
+  const publicada = atual.published !== false;
 
-  function detectOS() {
+  function detectarSistema() {
     const ua = navigator.userAgent || "";
-    const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
-    const text = `${platform} ${ua}`.toLowerCase();
-    if (/android/.test(text)) return { os: "android" };
-    if (/iphone|ipad|ipod/.test(text)) return { os: "ios" };
-    if (/win/.test(text)) return { os: "windows", arch: "x64" };
-    if (/mac/.test(text)) {
-      // Safari em Apple Silicon se apresenta como Intel; sem sinal confiável, oferecemos os dois.
-      return { os: "macos", arch: "arm64", ambiguous: true };
-    }
-    if (/linux|x11|cros/.test(text)) return { os: "linux", arch: "x86_64" };
-    return { os: "unknown" };
+    const plataforma = navigator.userAgentData?.platform || navigator.platform || "";
+    const texto = `${plataforma} ${ua}`.toLowerCase();
+    if (/android/.test(texto)) return { os: "android" };
+    if (/iphone|ipad|ipod/.test(texto)) return { os: "ios" };
+    if (/win/.test(texto)) return { os: "windows", arch: "x64" };
+    // O Safari num Mac Apple Silicon se apresenta como Intel: oferecemos os dois.
+    if (/mac/.test(texto)) return { os: "macos", arch: "arm64", ambiguo: true };
+    if (/linux|x11|cros/.test(texto)) return { os: "linux", arch: "x86_64" };
+    return { os: "desconhecido" };
   }
 
-  function osName(os) {
-    return { linux: "Linux", windows: "Windows", macos: "macOS" }[os] || "o seu sistema";
-  }
+  const rotuloLinux = (a) =>
+    ({ arch: "Arch (pacman)", deb: "Debian/Ubuntu (.deb)", appimage: "AppImage", tar: ".tar.gz" })[a.flavor] || a.label;
+  // Nome curto para o botão; o rótulo completo do catálogo fica na lista de pacotes.
+  const rotuloCurto = (a) =>
+    a.os === "windows" ? "Windows" : a.os === "macos" ? (a.arch === "arm64" ? "Mac com Apple Silicon" : "Mac com Intel") : a.label;
+  // Destaca um pacote só quando ele é inequívoco (Windows, Mac Apple Silicon): no
+  // Linux o navegador não sabe a distribuição, e a aba já diz "seu sistema".
+  const ehMeu = (a, sistema) => {
+    const exatos = atual.assets.filter((x) => x.os === sistema.os && x.arch === sistema.arch);
+    return exatos.length === 1 && exatos[0] === a;
+  };
 
-  function renderPrimary(detected) {
-    const label = document.querySelector("[data-download-label]");
-    const note = document.querySelector("[data-download-note]");
-    const link = document.querySelector("[data-download-primary]");
-    const { version, tag, assets } = data.current;
-    const match = assets.find(a => a.os === detected.os && (!detected.arch || a.arch === detected.arch)) || assets.find(a => a.os === detected.os);
-    if (detected.os === "linux") {
-      // O navegador não sabe a distribuição: o botão leva à lista e a nota traz os links diretos.
-      const flavors = assets.filter(a => a.os === "linux");
-      label.textContent = `Baixar para Linux · ${version}`;
-      note.innerHTML = flavors.map(a => `<a href="${assetUrl(a.tag || tag, a.file)}">${escape(a.flavor === "arch" ? "Arch (pacman)" : a.flavor === "deb" ? "Debian/Ubuntu (.deb)" : "pasta .tar.gz")}</a>`).join(" · ") + ` · <a href="${assetUrl(tag, data.current.checksums)}">SHA256SUMS</a>`;
-      return;
-    }
-    if (match && match.pending) {
-      label.textContent = `Waxtrail ${version} para ${osName(match.os)}: em preparação`;
-      note.innerHTML = `${escape(match.pending)} <a href="#download">Ver os pacotes disponíveis</a>.`;
-      return;
-    }
-    if (!match) {
-      label.textContent = `Baixar o Waxtrail ${version}`;
-      note.textContent = detected.os === "android" || detected.os === "ios"
-        ? "O Waxtrail é um aplicativo de computador. Abra esta página no Linux, Windows ou macOS para baixar."
-        : "Escolha o pacote do seu sistema na lista abaixo.";
-      return;
-    }
-    link.href = assetUrl(match.tag || tag, match.file);
-    link.removeAttribute("data-download-primary");
-    label.textContent = `Baixar para ${match.label} · ${match.version || version}`;
-    const alt = detected.ambiguous ? assets.find(a => a.os === "macos" && a.arch !== match.arch) : null;
-    note.innerHTML = `${escape(match.file)}${alt ? ` · Mac com Intel? <a href="${assetUrl(alt.tag || tag, alt.file)}">baixe a versão Intel</a>.` : ""} · <a href="${assetUrl(match.tag || tag, data.current.checksums)}">SHA256SUMS</a>`;
-  }
-
-  function renderCards(detected) {
-    const holder = document.querySelector("[data-download-cards]");
-    const { tag, assets, checksums } = data.current;
-    holder.innerHTML = assets.map(asset => {
-      const mine = asset.os === detected.os && (!detected.arch || asset.arch === detected.arch || detected.ambiguous);
-      return `<article class="cartao${mine ? " destaque" : ""}">
-        <p class="cartao-os">${escape(osName(asset.os))}${mine ? '<span class="tag">seu sistema</span>' : ""}</p>
-        <h3>${escape(asset.label)}</h3>
-        <p>${escape(asset.pending || asset.note)}</p>
-        ${asset.pending ? `<span class="botao desativado" aria-disabled="true">Em preparação</span>` : `<a class="botao primario" href="${assetUrl(asset.tag || tag, asset.file)}">Baixar ${escape(asset.kind)}${asset.version ? ` · ${escape(asset.version)}` : ""}</a>`}
-        <small><code>${escape(asset.file)}</code>${asset.alternative ? ` · <a href="${assetUrl(asset.tag || tag, asset.alternative.file)}">${escape(asset.alternative.label)}</a>` : ""}</small>
-      </article>`;
-    }).join("") + `<article class="cartao verificacao">
-        <p class="cartao-os">Conferência</p>
-        <h3>Somas SHA256</h3>
-        <p>Confira o arquivo baixado antes de extrair: <code>sha256sum -c SHA256SUMS.txt</code> no Linux e macOS, ou <code>Get-FileHash</code> no PowerShell.</p>
-        <a class="botao" href="${assetUrl(tag, checksums)}">Baixar ${escape(checksums)}</a>
-        <small><a href="${repoUrl}/releases/tag/${tag}">Notas da release ${escape(data.current.version)}</a></small>
-      </article>`;
-  }
-
-  function renderPrevious() {
-    const list = document.querySelector("[data-v1-list]");
-    const { tag, assets } = data.previous;
-    list.innerHTML = assets.map(asset => `<li><a href="${assetUrl(tag, asset.file)}">${escape(asset.label)}</a> <code>${escape(asset.file)}</code></li>`).join("")
-      + `<li><a href="${repoUrl}/releases/tag/${tag}">Notas da release ${escape(data.previous.version)}</a></li>`;
-  }
-
-  function wireLinks() {
-    document.querySelectorAll("[data-repo-link]").forEach(a => { a.href = repoUrl; });
-    document.querySelectorAll("[data-releases-link]").forEach(a => { a.href = `${repoUrl}/releases`; });
-    document.querySelectorAll("[data-changelog-link]").forEach(a => { a.href = `${repoUrl}/blob/main/CHANGELOG.md`; });
-    document.querySelectorAll("[data-issues-link]").forEach(a => { a.href = `${repoUrl}/issues`; });
-    document.querySelectorAll("[data-version-text]").forEach(n => { n.textContent = data.current.version; });
-    document.querySelectorAll("[data-version-badge]").forEach(n => { n.textContent = data.current.version.split(".").slice(0, 2).join("."); });
-  }
-
-  function tabs(detected) {
-    const buttons = [...document.querySelectorAll('[role="tab"]')];
-    const panels = buttons.map(b => document.getElementById(b.getAttribute("aria-controls")));
-    function activate(button) {
-      buttons.forEach((b, i) => {
-        const on = b === button;
-        b.setAttribute("aria-selected", String(on));
-        b.tabIndex = on ? 0 : -1;
-        panels[i].hidden = !on;
-      });
-    }
-    buttons.forEach((b, i) => {
-      b.addEventListener("click", () => activate(b));
-      b.addEventListener("keydown", event => {
-        const delta = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
-        if (!delta) return;
-        event.preventDefault();
-        const next = buttons[(i + delta + buttons.length) % buttons.length];
-        next.focus();
-        activate(next);
-      });
-    });
-    const preferred = buttons.find(b => b.dataset.os === detected.os);
-    if (preferred) activate(preferred);
-  }
-
-  function mobileMenu() {
-    const toggle = document.querySelector(".menu-toggle");
-    const menu = document.getElementById("menu-movel");
-    toggle.addEventListener("click", () => {
-      const open = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!open));
-      toggle.setAttribute("aria-label", open ? "Abrir menu" : "Fechar menu");
-      menu.hidden = open;
-    });
-    menu.addEventListener("click", event => {
-      if (event.target.closest("a")) { toggle.setAttribute("aria-expanded", "false"); menu.hidden = true; }
-    });
-  }
-
-  async function refreshFromGitHub() {
-    // Opcional: se a API responder, mostra a versão mais recente publicada. A página funciona sem isso.
-    try {
-      const response = await fetch(`https://api.github.com/repos/${data.repo}/releases/latest`, { headers: { Accept: "application/vnd.github+json" } });
-      if (!response.ok) return;
-      const release = await response.json();
-      const version = String(release.tag_name || "").replace(/^v/, "");
-      if (version && version !== data.current.version) {
-        const note = document.querySelector("[data-download-note]");
-        note.insertAdjacentHTML("beforeend", ` · <a href="${escape(release.html_url)}">Há uma release mais nova: ${escape(version)}</a>`);
+  function preencherTextos() {
+    const versaoPacman = atual.version.replace(/-/g, "");
+    for (const n of todos("[data-versao]")) n.textContent = atual.version;
+    for (const n of todos("[data-versao-pacman]")) n.textContent = versaoPacman;
+    for (const n of todos("[data-versao-curta]")) n.textContent = atual.version.split(".").slice(0, 2).join(".");
+    for (const n of todos("[data-versao-anterior]")) n.textContent = anterior.version;
+    for (const n of todos("[data-link-releases]")) n.href = `${repoUrl}/releases`;
+    for (const n of todos("[data-link-problemas]")) n.href = `${repoUrl}/issues`;
+    for (const n of todos("[data-link-seguranca]")) n.href = `${repoUrl}/security/advisories/new`;
+    const chave = dados.minisignPublicKey;
+    for (const n of todos("[data-chave-minisign]")) {
+      if (chave) {
+        for (const c of todos("code[data-minisign]", n)) c.textContent = `minisign -Vm SHA256SUMS.txt -P ${chave}`;
+      } else {
+        n.hidden = true;
       }
-    } catch (_) { /* offline ou repositório privado: silêncio */ }
+    }
+    if (!publicada) {
+      for (const n of todos("[data-download-estado]")) {
+        n.textContent = `O Waxtrail ${atual.version} está em preparação: os pacotes abaixo entram aqui no dia da release. Enquanto isso, a versão ${anterior.version} continua disponível no fim desta seção.`;
+      }
+    }
   }
 
-  const detected = detectOS();
-  document.documentElement.dataset.os = detected.os;
-  wireLinks();
-  renderPrimary(detected);
-  renderCards(detected);
-  renderPrevious();
-  tabs(detected);
-  mobileMenu();
-  refreshFromGitHub();
+  /* O que o botão principal oferece; vale para o da abertura e o da seção de download. */
+  function principal(sistema) {
+    const { version, tag, assets, checksums } = atual;
+    const somas = `<a href="${urlArquivo(tag, checksums)}">SHA256SUMS</a>`;
+    if (!publicada) {
+      return {
+        rotulo: `Waxtrail ${version}: em preparação`,
+        href: "#download",
+        nota: `Os pacotes saem no dia da release. <a href="#anterior">Ver os sistemas e a versão ${escapar(anterior.version)}</a>.`,
+      };
+    }
+    if (sistema.os === "linux") {
+      // O navegador não sabe a distribuição: o botão leva à lista e a nota traz os links diretos.
+      return {
+        rotulo: `Baixar para Linux · ${version}`,
+        href: "#instalacao",
+        nota: `${assets
+          .filter((a) => a.os === "linux")
+          .map((a) => `<a href="${urlArquivo(tag, a.file)}">${escapar(rotuloLinux(a))}</a>`)
+          .join(" · ")} · ${somas}`,
+      };
+    }
+    const escolhido =
+      assets.find((a) => a.os === sistema.os && (!sistema.arch || a.arch === sistema.arch)) ||
+      assets.find((a) => a.os === sistema.os);
+    if (!escolhido) {
+      return {
+        rotulo: `Baixar o Waxtrail ${version}`,
+        href: "#instalacao",
+        nota: escapar(
+          sistema.os === "android" || sistema.os === "ios"
+            ? "O Waxtrail é um aplicativo de computador: abra esta página no Linux, no Windows ou no macOS para baixar."
+            : "Escolha o pacote do seu sistema na lista abaixo.",
+        ),
+      };
+    }
+    const outro = sistema.ambiguo ? assets.find((a) => a.os === "macos" && a.arch !== escolhido.arch) : null;
+    return {
+      rotulo: `Baixar para ${rotuloCurto(escolhido)} · ${version}`,
+      href: urlArquivo(tag, escolhido.file),
+      nota: `<code>${escapar(escolhido.file)}</code>${
+        outro ? ` · Mac com Intel? <a href="${urlArquivo(tag, outro.file)}">baixe a versão Intel</a>` : ""
+      } · ${somas}`,
+    };
+  }
+
+  function montarPrincipal(sistema) {
+    const oferta = principal(sistema);
+    for (const botao of todos("[data-download-principal]")) {
+      const rotulo = botao.querySelector("[data-download-rotulo]");
+      const nota = botao.parentElement.parentElement.querySelector("[data-download-nota]");
+      if (!publicada && botao.dataset.downloadPrincipal === "secao") {
+        // Dentro da própria seção, "em preparação" é estado, não link.
+        botao.removeAttribute("href");
+        botao.setAttribute("aria-disabled", "true");
+        botao.classList.remove("botao-p");
+        rotulo.textContent = `${atual.version} em preparação`;
+        if (nota) {
+          nota.innerHTML = `Os pacotes entram aqui no dia da release. Enquanto isso, a <a href="#anterior">versão ${escapar(anterior.version)}</a> continua disponível.`;
+        }
+        continue;
+      }
+      botao.href = oferta.href;
+      rotulo.textContent = oferta.rotulo;
+      if (nota) nota.innerHTML = oferta.nota;
+    }
+  }
+
+  function linhaGenerica(a) {
+    const linha = document.createElement("div");
+    linha.className = "pacote";
+    linha.dataset.pacote = `${a.os}/${a.flavor || a.arch}`;
+    linha.innerHTML = `<div class="pacote-id"><h4 data-pacote-nome></h4><code class="pacote-arquivo" data-pacote-arquivo></code></div>
+      <div class="pacote-instrucao"><p>${escapar(a.note)}</p></div>
+      <div class="pacote-acao" data-pacote-acao></div>`;
+    return linha;
+  }
+
+  function montarPacotes(sistema) {
+    const { tag, assets } = atual;
+    const usadas = new Set();
+    for (const a of assets) {
+      let linha = document.querySelector(`[data-pacote="${a.os}/${a.flavor || a.arch}"]`);
+      if (!linha) {
+        const painel = document.getElementById(`inst-${a.os}`);
+        if (!painel) continue;
+        linha = linhaGenerica(a);
+        painel.appendChild(linha);
+      }
+      usadas.add(linha);
+      const meu = ehMeu(a, sistema);
+      const nome = linha.querySelector("[data-pacote-nome]");
+      nome.textContent = a.label;
+      if (meu) nome.insertAdjacentHTML("beforeend", ' <span class="etiqueta">seu sistema</span>');
+      linha.querySelector("[data-pacote-arquivo]").textContent = a.file;
+      linha.classList.toggle("destaque", meu);
+      linha.querySelector("[data-pacote-acao]").innerHTML = publicada
+        ? `<a class="botao${meu ? " botao-p" : ""}" href="${urlArquivo(tag, a.file)}">Baixar ${escapar(a.kind)}</a>${
+            a.alternative ? `<a href="${urlArquivo(tag, a.alternative.file)}">${escapar(a.alternative.label)}</a>` : ""
+          }`
+        : `<span class="botao" aria-disabled="true">Em preparação</span>`;
+    }
+    for (const linha of todos("[data-pacote]")) if (!usadas.has(linha)) linha.hidden = true;
+  }
+
+  function montarSomas() {
+    const { tag, checksums, version } = atual;
+    for (const n of todos("[data-somas]")) {
+      n.innerHTML = publicada
+        ? [
+            `<a href="${urlArquivo(tag, checksums)}">${escapar(checksums)}</a>`,
+            dados.minisignPublicKey ? `<a href="${urlArquivo(tag, `${checksums}.minisig`)}">${escapar(checksums)}.minisig</a>` : "",
+            `<a href="${urlNotas(tag)}">Notas da release ${escapar(version)}</a>`,
+          ]
+            .filter(Boolean)
+            .join(" · ")
+        : `As somas${dados.minisignPublicKey ? " e a assinatura" : ""} da ${escapar(version)} saem junto com os pacotes.`;
+    }
+  }
+
+  function montarAnterior() {
+    const lista = document.querySelector("[data-lista-anterior]");
+    if (!lista || !anterior) return;
+    const { tag, assets } = anterior;
+    lista.innerHTML = `${assets
+      .map((a) => `<li><a href="${urlArquivo(tag, a.file)}">${escapar(a.label)}</a> <code>${escapar(a.file)}</code></li>`)
+      .join("")}<li><a href="${urlNotas(tag)}">Notas da release ${escapar(anterior.version)}</a></li>`;
+    if (!publicada) document.getElementById("anterior")?.setAttribute("open", "");
+  }
+
+  function abas(sistema) {
+    const botoes = todos('[role="tab"]');
+    if (!botoes.length) return;
+    const paineis = botoes.map((b) => document.getElementById(b.getAttribute("aria-controls")));
+    const ativar = (botao) => {
+      botoes.forEach((b, i) => {
+        const ligado = b === botao;
+        b.setAttribute("aria-selected", String(ligado));
+        b.tabIndex = ligado ? 0 : -1;
+        paineis[i].hidden = !ligado;
+      });
+    };
+    botoes.forEach((b, i) => {
+      b.addEventListener("click", () => ativar(b));
+      b.addEventListener("keydown", (evento) => {
+        const passo = evento.key === "ArrowRight" ? 1 : evento.key === "ArrowLeft" ? -1 : 0;
+        let proximo = null;
+        if (passo) proximo = botoes[(i + passo + botoes.length) % botoes.length];
+        else if (evento.key === "Home") proximo = botoes[0];
+        else if (evento.key === "End") proximo = botoes[botoes.length - 1];
+        if (!proximo) return;
+        evento.preventDefault();
+        proximo.focus();
+        ativar(proximo);
+      });
+    });
+    const preferido = botoes.find((b) => b.dataset.os === sistema.os);
+    if (preferido) preferido.insertAdjacentHTML("beforeend", ' <span class="etiqueta">seu sistema</span>');
+    ativar(preferido || botoes[0]);
+  }
+
+  function menuMovel() {
+    const alternar = document.querySelector(".menu-alternar");
+    const menu = document.getElementById("menu-movel");
+    if (!alternar || !menu) return;
+    const fechar = () => {
+      alternar.setAttribute("aria-expanded", "false");
+      alternar.setAttribute("aria-label", "Abrir menu");
+      menu.hidden = true;
+    };
+    alternar.addEventListener("click", () => {
+      const aberto = alternar.getAttribute("aria-expanded") === "true";
+      alternar.setAttribute("aria-expanded", String(!aberto));
+      alternar.setAttribute("aria-label", aberto ? "Abrir menu" : "Fechar menu");
+      menu.hidden = aberto;
+    });
+    menu.addEventListener("click", (evento) => {
+      if (evento.target.closest("a")) fechar();
+    });
+    document.addEventListener("keydown", (evento) => {
+      if (evento.key === "Escape" && !menu.hidden) {
+        fechar();
+        alternar.focus();
+      }
+    });
+  }
+
+  function botoesDeCopiar() {
+    for (const botao of todos(".copiar")) {
+      botao.hidden = false;
+      const codigo = botao.parentElement.querySelector("pre");
+      const voltar = () => setTimeout(() => (botao.textContent = "Copiar"), 1600);
+      const selecionar = () => {
+        const faixa = document.createRange();
+        faixa.selectNodeContents(codigo);
+        const selecao = getSelection();
+        selecao.removeAllRanges();
+        selecao.addRange(faixa);
+        botao.textContent = "Selecionado";
+        voltar();
+      };
+      botao.addEventListener("click", () => {
+        if (!navigator.clipboard) return selecionar();
+        navigator.clipboard.writeText(codigo.textContent).then(() => {
+          botao.textContent = "Copiado";
+          voltar();
+        }, selecionar);
+      });
+    }
+  }
+
+  async function avisarVersaoNova() {
+    // Extra opcional: se a API responder com uma release mais nova que o catálogo, avisa.
+    if (!publicada) return;
+    try {
+      const resposta = await fetch(`https://api.github.com/repos/${dados.repo}/releases/latest`, {
+        headers: { Accept: "application/vnd.github+json" },
+      });
+      if (!resposta.ok) return;
+      const release = await resposta.json();
+      const versao = String(release.tag_name || "").replace(/^v/, "");
+      if (versao && versao !== atual.version) {
+        for (const nota of todos("[data-download-nota]")) {
+          nota.insertAdjacentHTML("beforeend", ` · <a href="${escapar(release.html_url)}">há uma versão mais nova: ${escapar(versao)}</a>`);
+        }
+      }
+    } catch (_) {
+      /* sem rede ou limite da API: silêncio */
+    }
+  }
+
+  const sistema = detectarSistema();
+  document.documentElement.dataset.os = sistema.os;
+  preencherTextos();
+  montarPrincipal(sistema);
+  montarPacotes(sistema);
+  montarSomas();
+  montarAnterior();
+  abas(sistema);
+  menuMovel();
+  botoesDeCopiar();
+  avisarVersaoNova();
 })();
