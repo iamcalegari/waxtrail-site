@@ -43,7 +43,8 @@
     if (t < fx.ap || t >= CICLO - 2.5) return { k: "oculta" };
     if (t < fx.pr) {
       const dt = t - fx.ap;
-      return { k: "procurando", sub: dt > 2.4 ? `${1 + (Math.floor(dt * 0.8) % 4)} peers respondendo` : "pedindo Extended" };
+      const peers = 1 + (Math.floor(dt * 0.8) % 4);
+      return { k: "procurando", sub: dt > 2.4 ? `${peers} ${peers === 1 ? "peer" : "peers"} respondendo` : "pedindo Extended" };
     }
     if (fx.fim === "nao") return { k: "nao" };
     if (t < fx.fi) {
@@ -111,7 +112,7 @@
         "dur",
         escolhida
           ? `${fx.fonte} × ${fx.arq}${fx.delta ? `<span class="delta">${fx.delta}</span>` : ""}`
-          : `${fx.fonte} × <span class="vazio">–:––</span>`,
+          : `<span>${fx.fonte} × <span class="vazio">–:––</span></span>`,
       );
       let html = "";
       switch (e.k) {

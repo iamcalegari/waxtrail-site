@@ -5,32 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Waxtrail — a versão certa de cada faixa, na melhor qualidade</title>
   <meta name="description" content="Cole o link de uma playlist do Spotify ou do SoundCloud: o Waxtrail procura cada faixa em Extended Mix no Soulseek, baixa várias ao mesmo tempo em FLAC, WAV ou AIFF e deixa você conferir de ouvido, prévia contra arquivo, antes de levar para o set.">
-  <meta name="theme-color" content="#15171a" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#ece6d9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121918" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#efe8d8" media="(prefers-color-scheme: light)">
   <meta name="color-scheme" content="dark light">
   <meta property="og:title" content="Waxtrail — a versão certa de cada faixa, na melhor qualidade">
   <meta property="og:description" content="Playlist do Spotify ou do SoundCloud → cada faixa em Extended, sem perdas, conferida de ouvido.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://iamcalegari.github.io/waxtrail-site/">
-  <meta property="og:image" content="https://iamcalegari.github.io/waxtrail-site/assets/og-imagem.png">
+  <meta property="og:image" content="https://iamcalegari.github.io/waxtrail-site/assets/og-trilha.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Waxtrail: a versão certa de cada faixa, na melhor qualidade, ao lado da Fila de uma playlist de exemplo.">
+  <meta property="og:image:alt" content="Waxtrail: a espiral do logo, que vira uma trilha, ao lado da frase “A versão certa de cada faixa, na melhor qualidade”.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://iamcalegari.github.io/waxtrail-site/">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icone-32.png">
   <link rel="icon" type="image/png" sizes="256x256" href="assets/icone-256.png">
   <link rel="apple-touch-icon" href="assets/icone-256.png">
-  <link rel="preload" href="assets/fontes/Archivo-variavel.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fontes/Signika-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fontes/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fontes/IBMPlexMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=3.0.0">
+  <link rel="stylesheet" href="styles.css?v=3.0.0-2">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <a class="pular" href="#conteudo">Ir para o conteúdo</a>
 
-  <svg width="0" height="0" class="oculto" aria-hidden="true" focusable="false">
+  <svg class="oculto" width="0" height="0" aria-hidden="true" focusable="false">
     <symbol id="sulco" viewBox="0 12 64 40">
       <path d="M 11 28 A 3 3 0 0 1 17 28 A 7 7 0 0 1 3 28 A 11 11 0 0 1 25 28 L 25 40 A 8 8 0 0 0 41 40 L 41 34 A 2 2 0 0 1 45 34 L 45 40 A 8 8 0 0 0 61 40 L 61 25" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
@@ -39,55 +39,92 @@
     <symbol id="i-ok" viewBox="0 0 12 12"><path d="M2 6.5 5 9.2l5-6.4"/></symbol>
   </svg>
 
-  <header class="topo">
-    <div class="envoltorio topo-in">
+  <div class="pagina">
+    <header class="topo">
       <a class="marca" href="#conteudo" aria-label="Waxtrail, início">
-        <svg class="marca-simbolo" width="34" height="21" aria-hidden="true"><use href="#sulco"/></svg>
-        <span class="marca-nome">waxtrail</span>
+        <svg aria-hidden="true"><use href="#sulco"/></svg>
+        <span translate="no">waxtrail</span>
       </a>
       <nav class="menu" aria-label="Seções">
         <a href="#como-funciona">Como funciona</a>
         <a href="#conferir">Conferir</a>
-        <a href="#recursos">Recursos</a>
-        <a href="#download">Download</a>
+        <a href="#privacidade">Privacidade</a>
+        <a href="#seguranca">Segurança</a>
         <a href="#perguntas">Perguntas</a>
       </nav>
-      <a class="botao botao-p botao-pequeno topo-acao" href="#download">Baixar</a>
-      <button class="menu-alternar" type="button" aria-expanded="false" aria-controls="menu-movel" aria-label="Abrir menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-  <nav id="menu-movel" class="menu-movel" hidden aria-label="Seções">
-    <a href="#como-funciona">Como funciona</a>
-    <a href="#conferir">Conferir</a>
-    <a href="#recursos">Recursos</a>
-    <a href="#download">Download</a>
-    <a href="#instalacao">Instalação</a>
-    <a href="#perguntas">Perguntas</a>
-  </nav>
+      <a class="botao botao-topo" href="#download">Baixar</a>
+      <button class="menu-alternar" type="button" aria-expanded="false" aria-controls="menu-movel">Menu</button>
+    </header>
+    <nav id="menu-movel" class="menu-movel" aria-label="Seções, no celular">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#conferir">Conferir</a>
+      <a href="#download">Download</a>
+      <a href="#privacidade">Privacidade</a>
+      <a href="#seguranca">Segurança</a>
+      <a href="#limites">Limites</a>
+      <a href="#perguntas">Perguntas</a>
+    </nav>
 
-  <main id="conteudo">
-    <section class="hero" aria-labelledby="titulo">
-      <div class="envoltorio hero-grade">
-        <div>
-          <p class="selo"><span class="versao" data-versao-curta>3.0</span> Gratuito, para DJs. Linux, Windows e macOS.</p>
-          <h1 id="titulo">A versão certa de cada faixa, <span class="leve">na melhor qualidade.</span></h1>
-        </div>
-        <div class="hero-lado">
-          <p class="lead">Cole o link de uma playlist do Spotify ou do SoundCloud. O Waxtrail procura cada faixa em <strong>Extended Mix</strong> no Soulseek, baixa várias ao mesmo tempo em FLAC, WAV ou AIFF, com MP3 320 só se você permitir, e deixa você conferir de ouvido antes de levar para o set.</p>
-          <div class="acoes">
-            <a class="botao botao-p botao-grande" href="https://github.com/iamcalegari/waxtrail-site/releases" data-download-principal>
+    <main id="conteudo">
+      <section class="abre" aria-labelledby="titulo">
+        <!-- A linha, na grade do logo (traço 5, raios 3, 7, 11 e 8). Largura ≥ 1080 px. -->
+        <svg class="sulco sulco-d" viewBox="0 0 90 72" aria-hidden="true" focusable="false">
+          <path class="traco" id="trilha-d" pathLength="1" d="M 16.75 16 A 3 3 0 0 1 22.75 16 A 7 7 0 0 1 8.75 16 A 11 11 0 0 1 30.75 16 L 30.75 36 A 8 8 0 0 0 38.75 44 L 73.25 44 A 8 8 0 0 1 81.25 52 L 81.25 54 A 8 8 0 0 1 73.25 62 L 16.75 62 A 8 8 0 0 0 8.75 70 L 8.75 72.6"/>
+          <g class="furos">
+            <circle cx="30.75" cy="31" r="1.05"/>
+            <circle cx="41.5" cy="44" r="1.05"/>
+            <circle cx="48.5" cy="44" r="1.05"/>
+            <circle cx="55.5" cy="44" r="1.05"/>
+            <circle cx="62.5" cy="44" r="1.05"/>
+            <circle cx="69.5" cy="44" r="1.05"/>
+          </g>
+          <circle class="ponto" id="ponto-d" r="1.5" transform="translate(55.5 44)"/>
+        </svg>
+        <!-- A mesma linha no celular: a espiral, a virada para a margem e a descida. -->
+        <svg class="sulco sulco-m" viewBox="0 0 34 40" aria-hidden="true" focusable="false">
+          <path class="traco" pathLength="1" d="M 13.7 15.5 A 3 3 0 0 1 19.7 15.5 A 7 7 0 0 1 5.7 15.5 A 11 11 0 0 1 27.7 15.5 L 27.7 27.5 A 4 4 0 0 1 23.7 31.5 L 9.7 31.5 A 4 4 0 0 0 5.7 35.5 L 5.7 40.6"/>
+        </svg>
+
+        <div class="texto">
+          <div class="titulo-bloco">
+            <h1 id="titulo"><span>A versão certa</span> <span>de cada faixa,</span> <span>na melhor qualidade.</span></h1>
+            <p class="fato">Extended em FLAC, WAV ou AIFF. Gratuito.</p>
+          </div>
+          <p class="lead">O Waxtrail é um baixador de playlists para DJ. Cole o link do Spotify ou do SoundCloud: ele procura cada faixa em <strong>Extended Mix</strong> no Soulseek, baixa em FLAC, WAV ou AIFF e você confere de ouvido antes do set. Gratuito: Linux, Windows e macOS.</p>
+          <div class="cta" data-download-bloco>
+            <a class="botao botao-p" href="https://github.com/iamcalegari/waxtrail-site/releases" data-download-principal>
               <svg class="icone" aria-hidden="true"><use href="#i-baixar"/></svg>
               <span data-download-rotulo>Baixar o Waxtrail</span>
             </a>
-            <a class="botao botao-grande" href="#download">Outros sistemas</a>
+            <p class="cta-notas" data-download-nota>Linux x86_64, Windows 10 e 11 (64 bits) e macOS 12 ou mais novo. <a href="#download">Ver os pacotes</a></p>
           </div>
-          <p class="nota-cta" data-download-nota>Linux x86_64, Windows 10 e 11 (64 bits) e macOS 12 ou mais novo.</p>
         </div>
-      </div>
 
-      <div class="envoltorio">
+        <div class="ficha">
+          <p class="ficha-rot">Na trilha, uma faixa da playlist de exemplo:</p>
+          <p class="ficha-nome">Concrete Garden</p>
+          <p class="ficha-art">Tomás Reis, Ilha Baixa</p>
+          <p class="ficha-dados"><span class="tag">Extended Mix</span><span>WAV</span><span>3:58 × 7:12</span><span class="delta">+3:14</span></p>
+        </div>
+
+        <!-- Quadro de repouso: a faixa está em "Baixando 67 %". trilha.js anda daqui. -->
+        <ol class="paradas" id="paradas" aria-label="O caminho de uma faixa no Waxtrail">
+          <li class="p-haste"><b>Link colado</b><span>Afters 2026 · 32 faixas lidas</span></li>
+          <li class="p-cima" style="--x:41.5"><b>Procurando</b><span>pedindo Extended · 3 peers respondendo</span></li>
+          <li class="p-baixo" style="--x:48.5"><b>Na fila</b><span>posição 2 no peer</span></li>
+          <li class="p-cima ativa" style="--x:55.5"><b>Baixando <i id="pct">67 %</i></b><span>WAV · 2,1&nbsp;MB/s</span></li>
+          <li class="p-baixo" style="--x:62.5"><b>Conferindo duração e tags</b><span>3:58 na playlist × 7:12 no arquivo</span></li>
+          <li class="p-cima" style="--x:69.5"><b>Pronta</b><span>Extended Mix · 126&nbsp;BPM · 11B</span></li>
+        </ol>
+        <button class="pausa" id="pausa" type="button" hidden>Pausar o percurso</button>
+      </section>
+
+      <div class="corpo">
+        <section class="secao" id="como-funciona" aria-labelledby="como-titulo">
+          <header class="secao-cab parada">
+            <h2 id="como-titulo">Do link ao set</h2>
+            <p>Você age no começo e no fim: cola o link e confere. O resto corre sozinho, com tudo à vista na Fila.</p>
+          </header>
         <figure class="palco" aria-labelledby="palco-legenda">
           <div class="fila" id="fila" aria-hidden="true">
             <div class="fila-link">
@@ -100,7 +137,7 @@
               <div class="capa capa-grande" style="--c1:#6f8a73;--c2:#2c3833"></div>
               <div class="fila-tit">
                 <strong>Afters 2026</strong>
-                <span>de Lúcia M. · <i class="ponto-spotify"></i>Spotify · 32 faixas · 3 h 21 min · <span class="mono">~/Música/Waxtrail/Afters 2026</span></span>
+                <span>de Lúcia M. · <i class="ponto-spotify"></i>Spotify · 32&nbsp;faixas · 3&nbsp;h&nbsp;21&nbsp;min · <span class="mono">~/Música/Waxtrail/Afters 2026</span></span>
               </div>
               <dl class="numeros">
                 <div><dt>de 32<br>prontas</dt><dd id="n-prontas">6</dd></div>
@@ -131,78 +168,79 @@
               <div class="linha"><span class="c-num">5</span><span class="c-faixa"><span class="capa" style="--c1:#d6c27a;--c2:#3b3524"></span><span class="faixa-txt"><b>Rua 7 <i>(Extended Mix)</i></b><span>Nuno Sal</span></span></span><span class="c-info"><span class="c-versao"><span class="tag">Extended Mix</span></span><span class="c-qual">FLAC 24/48</span><span class="c-dur">7:01 × 7:01</span></span><span class="c-estado"><span class="estado-linha"><span class="e e-baix">Baixando <b>15 %</b></span><small>1,6 MB/s</small></span><span class="prog"><span style="transform: scaleX(0.154);"></span></span></span><span class="c-bpm"><span class="vazio">—</span></span><span class="c-tom"><span class="vazio">—</span></span></div>
               <div class="linha"><span class="c-num">6</span><span class="c-faixa"><span class="capa" style="--c1:#d98aa0;--c2:#3a2a30"></span><span class="faixa-txt"><b>Keep It Low</b><span>DAVI, Melissa Rocha</span></span></span><span class="c-info"><span class="c-versao"><span class="tag">Extended Mix</span></span><span class="c-qual">FLAC 16/44</span><span class="c-dur">6:30 × 6:30</span></span><span class="c-estado"><span class="estado-linha"><span class="e e-baix">Baixando <b>88 %</b></span><small>1,9 MB/s</small></span><span class="prog"><span style="transform: scaleX(0.889);"></span></span></span><span class="c-bpm"><span class="vazio">—</span></span><span class="c-tom"><span class="vazio">—</span></span></div>
               <div class="linha"><span class="c-num">7</span><span class="c-faixa"><span class="capa" style="--c1:#5f7fb0;--c2:#1f2633"></span><span class="faixa-txt"><b>Temporal <i>(Club Mix)</i></b><span>Oriente Público</span></span></span><span class="c-info"><span class="c-versao"><span class="tag">Club Mix</span></span><span class="c-qual">FLAC 24/48</span><span class="c-dur">7:40 × 7:40</span></span><span class="c-estado"><span class="estado-linha"><span class="e e-fila"><i class="pt"></i>Na fila</span><small>posição 1 no peer</small></span><span class="prog desligada"><span style="transform: scaleX(0);"></span></span></span><span class="c-bpm"><span class="vazio">—</span></span><span class="c-tom"><span class="vazio">—</span></span></div>
-              <div class="linha"><span class="c-num">8</span><span class="c-faixa"><span class="capa" style="--c1:#b0624a;--c2:#2e211d"></span><span class="faixa-txt"><b>Fogo Baixo</b><span>Amaral, Teixeira</span></span></span><span class="c-info"><span class="c-versao"><span class="vazio">—</span><small>pedida: Extended</small></span><span class="c-qual"><span class="vazio">—</span></span><span class="c-dur">5:52 × <span class="vazio">–:––</span></span></span><span class="c-estado"><span class="estado-linha"><span class="e e-proc"><i class="pt"></i>Procurando</span><small>1 peers respondendo</small></span><span class="prog desligada"><span style="transform: scaleX(0);"></span></span></span><span class="c-bpm"><span class="vazio">—</span></span><span class="c-tom"><span class="vazio">—</span></span></div>
+              <div class="linha"><span class="c-num">8</span><span class="c-faixa"><span class="capa" style="--c1:#b0624a;--c2:#2e211d"></span><span class="faixa-txt"><b>Fogo Baixo</b><span>Amaral, Teixeira</span></span></span><span class="c-info"><span class="c-versao"><span class="vazio">—</span><small>pedida: Extended</small></span><span class="c-qual"><span class="vazio">—</span></span><span class="c-dur"><span>5:52 × <span class="vazio">–:––</span></span></span></span><span class="c-estado"><span class="estado-linha"><span class="e e-proc"><i class="pt"></i>Procurando</span><small>1 peer respondendo</small></span><span class="prog desligada"><span style="transform: scaleX(0);"></span></span></span><span class="c-bpm"><span class="vazio">—</span></span><span class="c-tom"><span class="vazio">—</span></span></div>
               <div class="linha"><span class="c-num">9</span><span class="c-faixa"><span class="capa" style="--c1:#e0c35a;--c2:#2c2a22"></span><span class="faixa-txt"><b>Linha Amarela <i>(Extended Mix)</i></b><span>Cais</span></span></span><span class="c-info"><span class="c-versao"><span class="tag">Extended Mix</span></span><span class="c-qual">FLAC 16/44</span><span class="c-dur">6:58 × 6:58</span></span><span class="c-estado"><span class="estado-linha"><span class="e e-baix">Baixando <b>28 %</b></span><small>1,1 MB/s</small></span><span class="prog"><span style="transform: scaleX(0.286);"></span></span></span><span class="c-bpm"><span class="vazio">—</span></span><span class="c-tom"><span class="vazio">—</span></span></div>
               <div class="linha"><span class="c-num">10</span><span class="c-faixa"><span class="capa" style="--c1:#9aa7b0;--c2:#262a2e"></span><span class="faixa-txt"><b>Sol de Inverno</b><span>Helena Sá</span></span></span><span class="c-info"><span class="c-versao"><span class="tag">Extended Mix</span></span><span class="c-qual">WAV</span><span class="c-dur">3:50 × 7:15<span class="delta">+3:25</span></span></span><span class="c-estado"><span class="estado-linha"><span class="e e-fila"><i class="pt"></i>Na fila</span><small>posição 3 no peer</small></span><span class="prog desligada"><span style="transform: scaleX(0);"></span></span></span><span class="c-bpm"><span class="vazio">—</span></span><span class="c-tom"><span class="vazio">—</span></span></div>
               <!-- fila:fim -->
             </div>
             <div class="fila-pe"><span>Mostrando 10 de 32 faixas</span><span id="fila-relogio">Lote rodando</span></div>
           </div>
-          <figcaption id="palco-legenda">
-            <span>A Fila do Waxtrail 3.0 com uma playlist de exemplo, em velocidade de demonstração: cada faixa procurada em Extended, baixada, conferida e marcada com versão, qualidade, BPM e tom.</span>
+          <figcaption>
+            <span id="palco-legenda">A Fila do Waxtrail 3.0 com uma playlist de exemplo, em velocidade de demonstração: cada faixa procurada em Extended, baixada, conferida e marcada com versão, qualidade, BPM e tom.</span>
             <button class="botao botao-pequeno" type="button" data-fila-pausa hidden>Pausar a demonstração</button>
           </figcaption>
         </figure>
-      </div>
-    </section>
+          <ol class="fiada">
+            <li class="parada">
+              <h3><span class="n" aria-hidden="true">1</span>Cole o link</h3>
+              <div class="corpo-linha">
+                <p>Playlist pública do Spotify, set do SoundCloud ou uma lista em texto/CSV. O Waxtrail lê títulos, artistas, versão e duração e mostra a ficha da playlist antes de começar.</p>
+              </div>
+            </li>
+            <li class="parada">
+              <h3><span class="n" aria-hidden="true">2</span>Extended primeiro</h3>
+              <div class="corpo-linha">
+                <p>Para cada faixa, a busca pede a versão Extended e escolhe o melhor candidato. Sem Extended na rede, vale a Original quando ela já é a versão longa; senão, a versão comum, com o rótulo à vista. Remixes pedidos ficam como estão.</p>
+                <p class="dado"><b>versão antes de qualidade</b> Extended › comum › radio edit<br><b>dentro da versão</b> FLAC › WAV › AIFF › MP3 320, este só se você permitir</p>
+              </div>
+            </li>
+            <li class="parada">
+              <h3><span class="n" aria-hidden="true">3</span>Várias ao mesmo tempo</h3>
+              <div class="corpo-linha">
+                <p>As faixas baixam em paralelo, com progresso, velocidade e o que está acontecendo em cada linha: procurando, aguardando vaga no peer, baixando, verificando.</p>
+              </div>
+            </li>
+            <li class="parada">
+              <h3><span class="n" aria-hidden="true">4</span>Quarentena</h3>
+              <div class="corpo-linha">
+                <p>Cada download é conferido antes de chegar à sua pasta. O MP3 disfarçado de FLAC aparece no espectro.</p>
+                <p class="dado">formato real · duração · decodificação completa · espectro · nome saneado</p>
+              </div>
+            </li>
+            <li class="parada">
+              <h3><span class="n" aria-hidden="true">5</span>Confira e guarde</h3>
+              <div class="corpo-linha">
+                <p>Compare a prévia oficial com o arquivo baixado na mesma posição, com BPM e tom. O que você aprova vai para a pasta da playlist, com o nome organizado.</p>
+                <p class="dado"><b>destino</b> ~/Música/Waxtrail/Afters 2026/</p>
+              </div>
+            </li>
+          </ol>
+        </section>
 
-    <section class="secao" id="motivo" aria-labelledby="motivo-titulo">
-      <div class="envoltorio porque-grade">
-        <h2 id="motivo-titulo">Salvar a faixa é fácil. Achar a versão certa, em boa qualidade, é o trabalho.</h2>
-        <div class="porque-texto">
-          <p>Quem toca sabe: <em>Original Mix</em>, <em>Extended Mix</em> e um <em>Radio Edit</em> não são a mesma música, e um MP3 de 128 kbps não vale um FLAC. Procurar uma a uma no cliente Soulseek, para uma playlist de trinta faixas, come uma tarde. O Waxtrail faz a ponte entre a playlist que você já mantém e os arquivos certos, com a sua conferência no meio.</p>
-          <figure class="versoes">
-            <figcaption>Exemplo: a mesma faixa na playlist e no arquivo baixado, na mesma escala de tempo.</figcaption>
-            <div class="trilha"><span class="nome">Na playlist</span><div class="regua"><span class="r-corpo" style="left:22.22%;width:55.09%"></span></div><span class="dur">3:58</span></div>
-            <div class="trilha"><span class="nome">Extended Mix</span><div class="regua"><span class="r-intro" style="left:0;width:21.9%"></span><span class="r-corpo" style="left:22.22%;width:55.09%"></span><span class="r-saida" style="left:77.6%;width:22.4%"></span></div><span class="dur">7:12</span></div>
-            <div class="regua-legenda" aria-hidden="true"><span>intro 1:36</span><span class="fim">saída 1:38</span></div>
+        <section class="secao" id="versao" aria-labelledby="versao-titulo">
+          <header class="secao-cab parada">
+            <h2 id="versao-titulo">Salvar a faixa é fácil. Achar a versão certa, em boa qualidade, é o trabalho.</h2>
+            <p>Quem toca sabe: <em>Original Mix</em>, <em>Extended Mix</em> e <em>Radio Edit</em> não são a mesma música, e um MP3 de 128 kbps não vale um FLAC. Procurar uma a uma no cliente Soulseek, para uma playlist de trinta faixas, come uma tarde. O Waxtrail faz a ponte entre a playlist que você já mantém e os arquivos certos, com a sua conferência no meio.</p>
+          </header>
+          <figure class="versoes" aria-labelledby="versoes-legenda">
+            <figcaption class="versoes-legenda" id="versoes-legenda">Exemplo: a mesma faixa na playlist e no arquivo baixado, na mesma escala de tempo.</figcaption>
+            <div class="trilha-v">
+              <p class="cab"><span class="dur">3:58</span><span><b>na playlist.</b> Concrete Garden, como está no Spotify.</span></p>
+              <div class="regua" aria-hidden="true"><span class="r-falta" style="width:22.2%">sem intro</span><span class="r-corpo" style="width:55.1%">a faixa da playlist</span><span class="r-falta" style="width:22.7%">sem saída</span></div>
+            </div>
+            <div class="trilha-v">
+              <p class="cab"><span class="dur">7:12</span><span><b>no arquivo.</b> Concrete Garden (Extended Mix), em WAV, achada no Soulseek: 3:14 a mais para mixar.</span></p>
+              <div class="regua" aria-hidden="true"><span class="r-extra" style="width:22.2%"><i>intro</i> 1:36</span><span class="r-corpo" style="width:55.1%">o mesmo miolo</span><span class="r-extra" style="width:22.7%"><i>saída</i> 1:38</span></div>
+            </div>
           </figure>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section class="secao" id="como-funciona" aria-labelledby="como-titulo">
-      <div class="envoltorio">
-        <header class="secao-cab">
-          <h2 id="como-titulo">Do link ao set</h2>
-          <p>Quatro etapas, na ordem em que acontecem. Você age na primeira e na última; o resto corre sozinho, com tudo à vista na Fila.</p>
-        </header>
-        <ol class="cadeia">
-          <li class="etapa">
-            <span class="n" aria-hidden="true">1</span>
-            <h3>Cole o link</h3>
-            <p>Playlist pública do Spotify, set do SoundCloud ou uma lista em texto/CSV. O Waxtrail lê títulos, artistas, versão e duração e mostra a ficha da playlist antes de começar.</p>
-            <p class="dado"><b>entra</b> link ou CSV<br><b>sai</b> ficha da playlist</p>
-          </li>
-          <li class="etapa">
-            <span class="n" aria-hidden="true">2</span>
-            <h3>Extended primeiro</h3>
-            <p>Para cada faixa, a busca pede a versão Extended e escolhe o melhor candidato pela ordem que você definir. Sem Extended na rede, vale a Original quando ela já é a versão longa; senão, a versão comum, com o rótulo à vista.</p>
-            <p class="dado"><b>ordem</b> FLAC › WAV › AIFF › MP3 320</p>
-          </li>
-          <li class="etapa">
-            <span class="n" aria-hidden="true">3</span>
-            <h3>Baixa em paralelo</h3>
-            <p>Várias faixas ao mesmo tempo, com progresso, velocidade e o que está acontecendo em cada linha: procurando, aguardando vaga no peer, baixando, verificando.</p>
-            <p class="dado"><b>quarentena</b> formato real · duração · decodificação · espectro · nome</p>
-          </li>
-          <li class="etapa">
-            <span class="n" aria-hidden="true">4</span>
-            <h3>Confira e guarde</h3>
-            <p>Compare a prévia oficial (A) com o arquivo baixado (B) na mesma posição, com BPM e tom. O que você aprova vai para a pasta da playlist, com o nome organizado.</p>
-            <p class="dado"><b>destino</b> ~/Música/Waxtrail/Afters 2026/</p>
-          </li>
-          <li class="pulso" aria-hidden="true"><span></span></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="secao" id="conferir" aria-labelledby="conferir-titulo">
-      <div class="envoltorio">
-        <header class="secao-cab">
-          <h2 id="conferir-titulo">Ouça antes de levar para o set</h2>
-          <p>A prévia oficial da fonte (A) e o arquivo baixado (B) na mesma régua. Trocar de lado mantém o ponto da música, para você ouvir a diferença de verdade.</p>
-        </header>
+        <section class="secao" id="conferir" aria-labelledby="conferir-titulo">
+          <header class="secao-cab parada">
+            <h2 id="conferir-titulo">Ouça antes de levar para o set</h2>
+            <p>A prévia oficial da fonte (A) e o arquivo baixado (B) na mesma régua. Trocar de lado mantém o ponto da música, para você ouvir a diferença de verdade.</p>
+          </header>
+          <div class="ab-area">
         <div class="ab" id="ab">
           <div class="ab-faixa">
             <div class="ab-capa" role="img" aria-label="Capa de exemplo"></div>
@@ -219,7 +257,7 @@
           </div>
           <div class="ab-painel">
             <div class="ab-lados" role="group" aria-label="Lado em escuta">
-              <button class="ab-lado" type="button" data-lado="a" aria-pressed="false"><kbd>A</kbd><span>Prévia da fonte</span><small>trecho de 30 s da versão de 3:58</small></button>
+              <button class="ab-lado" type="button" data-lado="a" aria-pressed="false"><kbd>A</kbd><span>Prévia da fonte</span><small>trecho de 30&nbsp;s da versão de 3:58</small></button>
               <button class="ab-lado" type="button" data-lado="b" aria-pressed="true"><kbd>B</kbd><span>Arquivo baixado</span><small>WAV 16/44 · 7:12</small></button>
             </div>
             <div class="ondas" id="ondas">
@@ -233,7 +271,7 @@
               <span class="ab-relogio" id="ab-relogio">B 2:45 / 7:12</span>
               <span>loop no trecho da prévia, alinhado pela duração</span>
             </div>
-            <p class="ab-frase">A prévia (A) é um trecho de 30 s da versão de 3:58 que está na playlist; o arquivo (B) é a <b>Extended de 7:12</b>. São 3:14 a mais: 1:36 de intro e 1:38 de saída para mixar. No trecho da prévia, as duas batem.</p>
+            <p class="ab-frase">A prévia (A) é um trecho de 30&nbsp;s da versão de 3:58 que está na playlist; o arquivo (B) é a <b>Extended de 7:12</b>. São 3:14 a mais: 1:36 de intro e 1:38 de saída para mixar. No trecho da prévia, as duas batem.</p>
             <dl class="ab-cartoes">
               <div><dt>Duração</dt><dd>3:58 × 7:12 <span class="delta">+3:14</span></dd></div>
               <div><dt>BPM</dt><dd>126 × 126</dd></div>
@@ -248,312 +286,339 @@
             <p class="ab-nota">Demonstração sem áudio, com uma faixa de exemplo. No app, <kbd>A</kbd> e <kbd>B</kbd> alternam e <kbd>Espaço</kbd> toca.</p>
           </div>
         </div>
-      </div>
-    </section>
+          </div>
+        </section>
 
-    <section class="secao" id="recursos" aria-labelledby="recursos-titulo">
-      <div class="envoltorio">
-        <header class="secao-cab">
-          <h2 id="recursos-titulo">Feito para preparar o set, não para navegar</h2>
-        </header>
-        <dl class="spec">
-          <div class="spec-linha">
-            <dt>Versão antes de qualidade</dt>
-            <dd>Uma Extended em FLAC vem antes de uma versão comum sem perdas, que vem antes de um radio edit. Remixes pedidos ficam como estão.</dd>
-            <dd class="dado">Extended › comum › radio edit<br><span>depois, dentro da versão:</span> FLAC › WAV › AIFF › MP3 320</dd>
+        <section class="secao" id="telas" aria-labelledby="telas-titulo">
+          <header class="secao-cab parada">
+            <h2 id="telas-titulo">O Waxtrail 3.0, tela por tela</h2>
+            <p>Capturas do app com uma playlist de exemplo, no tema que o seu sistema usa.</p>
+          </header>
+          <div class="telas">
+            <figure class="tela parada">
+              <figcaption><b>Início</b><span>Cole o link; as playlists recentes mostram o que já baixou e o que falta.</span></figcaption>
+              <div class="quadro" role="group" aria-label="Captura da tela Início; no celular, role para os lados para ver a tela inteira">
+                <picture>
+                  <source srcset="assets/capturas/inicio-claro.webp" media="(prefers-color-scheme: light)">
+                  <img src="assets/capturas/inicio-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Tela Início do Waxtrail 3.0 com uma playlist de exemplo: o campo para colar o link e as playlists recentes.">
+                </picture>
+              </div>
+            </figure>
+            <figure class="tela parada">
+              <figcaption><b>Ficha da faixa</b><span>Abre na própria Fila, com os candidatos do Soulseek ao lado.</span></figcaption>
+              <div class="quadro" role="group" aria-label="Captura da tela Ficha da faixa; no celular, role para os lados para ver a tela inteira">
+                <picture>
+                  <source srcset="assets/capturas/ficha-claro.webp" media="(prefers-color-scheme: light)">
+                  <img src="assets/capturas/ficha-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="A Fila do Waxtrail 3.0 com a ficha de uma faixa de exemplo aberta e os candidatos do Soulseek ao lado.">
+                </picture>
+              </div>
+            </figure>
+            <figure class="tela parada">
+              <figcaption><b>Conferir</b><span>Prévia da fonte e arquivo baixado na mesma régua, com o veredito a um atalho.</span></figcaption>
+              <div class="quadro" role="group" aria-label="Captura da tela Conferir; no celular, role para os lados para ver a tela inteira">
+                <picture>
+                  <source srcset="assets/capturas/conferir-claro.webp" media="(prefers-color-scheme: light)">
+                  <img src="assets/capturas/conferir-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="A tela Conferir do Waxtrail 3.0 com uma faixa de exemplo: prévia da fonte e arquivo baixado na mesma régua.">
+                </picture>
+              </div>
+            </figure>
           </div>
-          <div class="spec-linha">
-            <dt>Arquivo conferido de verdade</dt>
-            <dd>Cada download passa por quarentena antes de chegar à sua pasta. O MP3 disfarçado de FLAC aparece no espectro.</dd>
-            <dd class="dado">formato real · duração · decodificação completa · espectro · nome saneado</dd>
-          </div>
-          <div class="spec-linha">
-            <dt>A/B na mesma posição</dt>
-            <dd>A troca entre a prévia da fonte e o arquivo mantém o ponto da música, com forma de onda, BPM e tom.</dd>
-            <dd class="dado">prévia (A) × arquivo (B) · onda · BPM · tom</dd>
-          </div>
-          <div class="spec-linha">
-            <dt>Conta Soulseek pelo app</dt>
-            <dd>O Waxtrail cria uma conta exclusiva para você ou usa a sua. A senha fica no cofre do sistema, nunca em texto puro no disco.</dd>
-            <dd class="dado">senha no cofre do sistema</dd>
-          </div>
-          <div class="spec-linha">
-            <dt>Primeiro arranque guiado</dt>
-            <dd>O motor Soulseek (slskd) é baixado na primeira vez que você abre o app, com a sua confirmação, do endereço oficial e com o SHA-256 conferido.</dd>
-            <dd class="dado">slskd · cerca de 60 MB · AGPL-3.0 · SHA-256 fixo</dd>
-          </div>
-          <div class="spec-linha">
-            <dt>Seu computador, seus arquivos</dt>
-            <dd>Sem conta no Waxtrail, sem servidor e sem telemetria. O app só fala com os endereços que mostra na primeira abertura; no Soulseek, quem baixa também compartilha as pastas das playlists baixadas, nada além delas.</dd>
-            <dd class="dado">sem conta · sem servidor · sem telemetria</dd>
-          </div>
-        </dl>
-        <div class="telas">
-          <figure>
-            <picture>
-              <source srcset="assets/capturas/inicio-claro.webp" media="(prefers-color-scheme: light)">
-              <img src="assets/capturas/inicio-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Tela Início do Waxtrail 3.0 com uma playlist de exemplo: o campo para colar o link e as playlists recentes.">
-            </picture>
-            <figcaption><b>Início.</b> Cole o link; as playlists recentes mostram o que já baixou e o que falta.</figcaption>
-          </figure>
-          <figure>
-            <picture>
-              <source srcset="assets/capturas/fila-claro.webp" media="(prefers-color-scheme: light)">
-              <img src="assets/capturas/fila-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="A Fila do Waxtrail 3.0 com uma playlist de exemplo: versão, qualidade, fonte × arquivo e estado de cada faixa na mesma linha.">
-            </picture>
-            <figcaption><b>Fila.</b> Versão, qualidade, fonte × arquivo e estado de cada faixa na mesma linha.</figcaption>
-          </figure>
-          <figure>
-            <picture>
-              <source srcset="assets/capturas/ficha-claro.webp" media="(prefers-color-scheme: light)">
-              <img src="assets/capturas/ficha-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="A Fila do Waxtrail 3.0 com a ficha de uma faixa de exemplo aberta e os candidatos do Soulseek ao lado.">
-            </picture>
-            <figcaption><b>Ficha da faixa.</b> Abre na própria Fila, com os candidatos do Soulseek ao lado.</figcaption>
-          </figure>
-          <figure>
-            <picture>
-              <source srcset="assets/capturas/conferir-claro.webp" media="(prefers-color-scheme: light)">
-              <img src="assets/capturas/conferir-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="A tela Conferir do Waxtrail 3.0 com uma faixa de exemplo: prévia da fonte e arquivo baixado na mesma régua.">
-            </picture>
-            <figcaption><b>Conferir.</b> Prévia da fonte e arquivo baixado na mesma régua, com o veredito a um atalho.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section class="secao" id="download" aria-labelledby="download-titulo">
-      <div class="envoltorio">
-        <div class="baixar-topo">
-          <div>
-            <h2 id="download-titulo">Waxtrail <span data-versao>3.0.0</span></h2>
-            <p data-download-estado>Gratuito. Os pacotes ficam nas releases do GitHub, com as somas SHA-256 para conferência.</p>
-          </div>
-          <div class="dl-principal">
-            <a class="botao botao-p botao-enorme" href="https://github.com/iamcalegari/waxtrail-site/releases" data-download-principal="secao">
-              <svg class="icone" aria-hidden="true"><use href="#i-baixar"/></svg>
-              <span data-download-rotulo>Ver os pacotes nas releases</span>
-            </a>
-            <p class="dl-meta" data-download-nota>Linux x86_64, Windows 10 e 11 (64 bits) e macOS 12 ou mais novo.</p>
-          </div>
-        </div>
-
-        <p class="nota-pacotes" id="instalacao">Os pacotes ainda não têm assinatura comercial nem notarização: o Windows e o macOS pedem confirmação na primeira abertura, como explicado em cada sistema.</p>
-
-        <div class="abas" role="tablist" aria-label="Sistema operacional">
-          <button class="aba" role="tab" type="button" aria-selected="true" aria-controls="inst-linux" id="aba-linux" data-os="linux">Linux</button>
-          <button class="aba" role="tab" type="button" aria-selected="false" aria-controls="inst-windows" id="aba-windows" data-os="windows" tabindex="-1">Windows</button>
-          <button class="aba" role="tab" type="button" aria-selected="false" aria-controls="inst-macos" id="aba-macos" data-os="macos" tabindex="-1">macOS</button>
-        </div>
-
-        <div class="painel" role="tabpanel" id="inst-linux" aria-labelledby="aba-linux" tabindex="0">
-          <h3 class="painel-titulo">Linux</h3>
-          <div class="pacote" data-pacote="linux/arch">
-            <div class="pacote-id"><h4 data-pacote-nome>Arch, CachyOS, EndeavourOS e derivados</h4><code class="pacote-arquivo" data-pacote-arquivo>waxtrail-bin-3.0.0-1-x86_64.pkg.tar.zst</code></div>
-            <div class="pacote-instrucao">
-              <div class="cmd"><pre><code>sudo pacman -U ./waxtrail-bin-<span data-versao-pacman>3.0.0</span>-1-x86_64.pkg.tar.zst</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
-              <p>Se o Waxtrail 2 estiver instalado, ele é substituído (os dois usam o comando <code>waxtrail</code>); a biblioteca dele fica intacta. Prefere compilar o pacote? Baixe o PKGBUILD e rode <code>makepkg -si</code> na pasta <code>waxtrail-bin</code>.</p>
-            </div>
-            <div class="pacote-acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
-          </div>
-          <div class="pacote" data-pacote="linux/deb">
-            <div class="pacote-id"><h4 data-pacote-nome>Debian 12, Ubuntu 22.04 ou mais novos</h4><code class="pacote-arquivo" data-pacote-arquivo>Waxtrail-3.0.0-linux-amd64.deb</code></div>
-            <div class="pacote-instrucao">
-              <div class="cmd"><pre><code>sudo apt install ./Waxtrail-<span data-versao>3.0.0</span>-linux-amd64.deb</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
-              <p>O apt instala o pacote e as dependências da sua distribuição, também nos derivados.</p>
-            </div>
-            <div class="pacote-acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
-          </div>
-          <div class="pacote" data-pacote="linux/appimage">
-            <div class="pacote-id"><h4 data-pacote-nome>Qualquer distribuição, sem instalar</h4><code class="pacote-arquivo" data-pacote-arquivo>Waxtrail-3.0.0-linux-x86_64.AppImage</code></div>
-            <div class="pacote-instrucao">
-              <div class="cmd"><pre><code>chmod +x Waxtrail-<span data-versao>3.0.0</span>-linux-x86_64.AppImage
-./Waxtrail-<span data-versao>3.0.0</span>-linux-x86_64.AppImage</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
-              <p>O AppImage traz o próprio WebKitGTK. Precisa de x86_64 com glibc 2.35 ou mais nova. Sem FUSE no sistema (contêineres, algumas distribuições imutáveis), rode com <code>--appimage-extract-and-run</code>.</p>
-            </div>
-            <div class="pacote-acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
-          </div>
-          <div class="pacote" data-pacote="linux/tar">
-            <div class="pacote-id"><h4 data-pacote-nome>Outras distribuições</h4><code class="pacote-arquivo" data-pacote-arquivo>Waxtrail-3.0.0-linux-x86_64.tar.gz</code></div>
-            <div class="pacote-instrucao">
-              <p>Usa o WebKitGTK 4.1 do sistema. O <code>instalar.sh</code> incluído põe o app na sua conta, em <code>~/.local</code>, sem root.</p>
-            </div>
-            <div class="pacote-acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
-          </div>
-        </div>
-
-        <div class="painel" role="tabpanel" id="inst-windows" aria-labelledby="aba-windows" tabindex="0">
-          <h3 class="painel-titulo">Windows</h3>
-          <div class="pacote" data-pacote="windows/x64">
-            <div class="pacote-id"><h4 data-pacote-nome>Windows 10 e 11 (64 bits)</h4><code class="pacote-arquivo" data-pacote-arquivo>Waxtrail-3.0.0-windows-x64-setup.exe</code></div>
-            <div class="pacote-instrucao">
-              <p>O instalador está em português, instala só na sua conta (sem pedir administrador) e cria o atalho no menu Iniciar e o desinstalador. O motor web (WebView2) já vem no Windows 10 atualizado e no 11; se faltar, o instalador o baixa da Microsoft. O motor Soulseek é baixado pelo próprio app no primeiro arranque.</p>
-              <p class="aviso"><b>O Windows protegeu o computador</b> pode aparecer na primeira abertura, porque o instalador ainda não tem assinatura de código. Clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>.</p>
-              <p>Quem preferir não instalar pode usar o <code>.zip</code>: extraia a pasta <code>Waxtrail</code> e abra <code>waxtrail.exe</code>.</p>
-            </div>
-            <div class="pacote-acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
-          </div>
-        </div>
-
-        <div class="painel" role="tabpanel" id="inst-macos" aria-labelledby="aba-macos" tabindex="0">
-          <h3 class="painel-titulo">macOS</h3>
-          <div class="pacote" data-pacote="macos/arm64">
-            <div class="pacote-id"><h4 data-pacote-nome>macOS Apple Silicon</h4><code class="pacote-arquivo" data-pacote-arquivo>Waxtrail-3.0.0-macos-arm64.dmg</code></div>
-            <div class="pacote-instrucao">
-              <p>M1 ou mais novo, macOS 12 ou mais novo. Abra o <code>.dmg</code> e arraste o Waxtrail para <b>Aplicativos</b>.</p>
-              <p class="aviso"><b>O app ainda não é notarizado pela Apple.</b> Tente abri-lo uma vez; depois vá a <b>Ajustes do Sistema › Privacidade e Segurança</b>, role até Segurança e clique em <b>Abrir mesmo assim</b>. O botão fica disponível por cerca de uma hora depois da tentativa.</p>
-            </div>
-            <div class="pacote-acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
-          </div>
-          <div class="pacote" data-pacote="macos/x64">
-            <div class="pacote-id"><h4 data-pacote-nome>macOS Intel</h4><code class="pacote-arquivo" data-pacote-arquivo>Waxtrail-3.0.0-macos-x64.dmg</code></div>
-            <div class="pacote-instrucao">
-              <p>Macs com processador Intel, macOS 12 ou mais novo. A instalação e a liberação na primeira abertura são as mesmas do Apple Silicon.</p>
-            </div>
-            <div class="pacote-acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
-          </div>
-        </div>
-
-        <div class="conferencia">
-          <div>
-            <h3>Confira o pacote antes de abrir</h3>
-            <p>Cada release traz o <code>SHA256SUMS.txt</code> com as somas de todos os pacotes<span data-chave-minisign>, assinadas com minisign: confira a assinatura primeiro e depois o arquivo baixado</span>. No Windows, o <code>Get-FileHash</code> do PowerShell mostra a soma do arquivo.</p>
-            <p class="somas" data-somas><a href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Somas e assinaturas nas releases</a></p>
-          </div>
-          <div class="passos">
-            <div class="passo" data-chave-minisign>
-              <span class="rotulo">A assinatura das somas, com a chave pública do Waxtrail</span>
-              <div class="cmd"><pre><code data-minisign>minisign -Vm SHA256SUMS.txt -P RWRHH8JA44Yfssw2ywsxAHAhYSgsJN3Bi7upMesMZ+RpjOYH4BMOlCta</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
-            </div>
-            <div class="passo">
-              <span class="rotulo">O arquivo, na pasta em que ele foi baixado</span>
-              <div class="cmd"><pre><code>sha256sum -c SHA256SUMS.txt --ignore-missing</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
-            </div>
-          </div>
-        </div>
-
-        <details class="anterior" id="anterior">
-          <summary>Waxtrail <span data-versao-anterior>2.1.2</span>, a geração anterior, continua disponível</summary>
-          <div>
-            <p>O Waxtrail 2 é outro aplicativo, com outra biblioteca. O 3.0 não a importa nem a altera: cada geração tem a sua pasta de dados.</p>
-            <ul class="lista-anterior" data-lista-anterior>
-              <li><a href="https://github.com/iamcalegari/waxtrail-site/releases/tag/v2.1.2">Pacotes e notas da release 2.1.2</a></li>
-            </ul>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="secao" id="primeira-abertura" aria-labelledby="primeira-titulo">
-      <div class="envoltorio primeira-grade">
-        <div>
-          <h2 id="primeira-titulo">O que acontece na primeira abertura</h2>
-          <ol class="etapas">
-            <li><span><b>Privacidade:</b> a lista exata dos endereços que o app acessa e quando. Nada se conecta antes de você pedir.</span></li>
-            <li><span><b>Pasta de downloads:</b> por padrão, <code>Waxtrail</code> dentro da sua pasta de música.</span></li>
-            <li><span><b>Motor Soulseek:</b> o slskd (cerca de 60 MB, licença AGPL-3.0) é baixado do endereço oficial, com o SHA-256 conferido antes de rodar.</span></li>
-            <li><span><b>Conta Soulseek:</b> crie uma exclusiva do Waxtrail ou use a sua; a senha vai para o cofre do sistema.</span></li>
-            <li><span><b>Rede e compartilhamento:</b> a porta de escuta e o compartilhamento das pastas das playlists baixadas (quem não compartilha costuma ser recusado pelos peers).</span></li>
-            <li><span><b>Atualizações:</b> o app só consulta se há versão nova se você disser que sim; a pergunta vem sem resposta marcada.</span></li>
-          </ol>
-          <figure class="captura-arranque">
-            <picture>
-              <source srcset="assets/capturas/primeiro-arranque-claro.webp" media="(prefers-color-scheme: light)">
-              <img src="assets/capturas/primeiro-arranque-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Primeira etapa do primeiro arranque do Waxtrail 3.0, que explica como o app trabalha e para onde ele se conecta.">
-            </picture>
-            <figcaption>A primeira etapa do primeiro arranque mostra esta mesma lista antes de qualquer conexão.</figcaption>
-          </figure>
-        </div>
-        <div class="conexoes">
-          <h3>Para onde o Waxtrail se conecta</h3>
-          <dl class="destinos">
+        <section class="secao baixar" id="download" aria-labelledby="download-titulo">
+          <div class="baixar-topo parada">
             <div>
+              <h2 id="download-titulo">Waxtrail <span data-versao>3.0.0</span></h2>
+              <p data-download-estado>Publicada em <span data-data-release>22 de outubro de 2026</span>. Gratuito. Os pacotes ficam nas releases do GitHub, com as somas SHA-256 assinadas para conferência.</p>
+              <p class="honesto">Os pacotes ainda não têm assinatura comercial nem notarização: o Windows e o macOS pedem confirmação na primeira abertura, como explicado em cada parada.</p>
+            </div>
+            <div class="baixar-cta" data-download-bloco>
+              <a class="botao botao-p" href="https://github.com/iamcalegari/waxtrail-site/releases" data-download-principal="secao">
+                <svg class="icone" aria-hidden="true"><use href="#i-baixar"/></svg>
+                <span data-download-rotulo>Ver os pacotes nas releases</span>
+              </a>
+              <p class="cta-notas" data-download-nota>Linux x86_64, Windows 10 e 11 (64 bits) e macOS 12 ou mais novo.</p>
+            </div>
+          </div>
+
+          <div id="instalacao">
+            <div class="grupo" id="inst-linux" data-grupo="linux">
+              <div class="grupo-cab parada">
+                <h3>Linux</h3>
+                <small>x86_64. O navegador não diz a distribuição: escolha o pacote.</small>
+              </div>
+              <div class="pacote parada" data-pacote="linux/arch">
+                <div><h4 data-pacote-nome>Arch, CachyOS, EndeavourOS e derivados</h4><code class="arquivo" translate="no" data-pacote-arquivo>waxtrail-bin-3.0.0-1-x86_64.pkg.tar.zst</code></div>
+                <div class="instrucao">
+                  <div class="cmd"><pre translate="no"><code>sudo pacman -U ./waxtrail-bin-<span data-versao-pacman>3.0.0</span>-1-x86_64.pkg.tar.zst</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
+                  <p>Se o Waxtrail 2 estiver instalado, ele é substituído (os dois usam o comando <code>waxtrail</code>); a biblioteca dele fica intacta. Prefere compilar o pacote? Baixe o PKGBUILD e rode <code>makepkg -si</code> na pasta <code>waxtrail-bin</code>.</p>
+                </div>
+                <div class="acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
+              </div>
+              <div class="pacote parada" data-pacote="linux/deb">
+                <div><h4 data-pacote-nome>Debian 12, Ubuntu 22.04 ou mais novos</h4><code class="arquivo" translate="no" data-pacote-arquivo>Waxtrail-3.0.0-linux-amd64.deb</code></div>
+                <div class="instrucao">
+                  <div class="cmd"><pre translate="no"><code>sudo apt install ./Waxtrail-<span data-versao>3.0.0</span>-linux-amd64.deb</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
+                  <p>O apt instala o pacote e as dependências da sua distribuição, também nos derivados.</p>
+                </div>
+                <div class="acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
+              </div>
+              <div class="pacote parada" data-pacote="linux/appimage">
+                <div><h4 data-pacote-nome>Qualquer distribuição, sem instalar</h4><code class="arquivo" translate="no" data-pacote-arquivo>Waxtrail-3.0.0-linux-x86_64.AppImage</code></div>
+                <div class="instrucao">
+                  <div class="cmd"><pre translate="no"><code>chmod +x Waxtrail-<span data-versao>3.0.0</span>-linux-x86_64.AppImage
+./Waxtrail-<span data-versao>3.0.0</span>-linux-x86_64.AppImage</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
+                  <p>O AppImage traz o próprio WebKitGTK. Precisa de x86_64 com glibc 2.35 ou mais nova. Sem FUSE no sistema (contêineres, algumas distribuições imutáveis), rode com <code>--appimage-extract-and-run</code>.</p>
+                </div>
+                <div class="acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
+              </div>
+              <div class="pacote parada" data-pacote="linux/tar">
+                <div><h4 data-pacote-nome>Outras distribuições</h4><code class="arquivo" translate="no" data-pacote-arquivo>Waxtrail-3.0.0-linux-x86_64.tar.gz</code></div>
+                <div class="instrucao">
+                  <p>Usa o WebKitGTK 4.1 do sistema. O <code>instalar.sh</code> incluído põe o app na sua conta, em <code>~/.local</code>, sem root.</p>
+                </div>
+                <div class="acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
+              </div>
+            </div>
+
+            <div class="grupo" id="inst-windows" data-grupo="windows">
+              <div class="grupo-cab parada"><h3>Windows</h3></div>
+              <div class="pacote parada" data-pacote="windows/x64">
+                <div><h4 data-pacote-nome>Windows 10 e 11 (64 bits)</h4><code class="arquivo" translate="no" data-pacote-arquivo>Waxtrail-3.0.0-windows-x64-setup.exe</code></div>
+                <div class="instrucao">
+                  <p>O instalador está em português, instala só na sua conta (sem pedir administrador) e cria o atalho no menu Iniciar e o desinstalador. O motor web (WebView2) já vem no Windows 10 atualizado e no 11; se faltar, o instalador o baixa da Microsoft. O motor Soulseek é baixado pelo próprio app no primeiro arranque.</p>
+                  <p class="aviso"><b>O Windows protegeu o computador</b> pode aparecer na primeira abertura, porque o instalador ainda não tem assinatura de código. Clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>.</p>
+                  <p>Quem preferir não instalar pode usar o <code>.zip</code>: extraia a pasta <code>Waxtrail</code> e abra <code>waxtrail.exe</code>.</p>
+                </div>
+                <div class="acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
+              </div>
+            </div>
+
+            <div class="grupo" id="inst-macos" data-grupo="macos">
+              <div class="grupo-cab parada"><h3>macOS</h3></div>
+              <div class="pacote parada" data-pacote="macos/arm64">
+                <div><h4 data-pacote-nome>macOS Apple Silicon</h4><code class="arquivo" translate="no" data-pacote-arquivo>Waxtrail-3.0.0-macos-arm64.dmg</code></div>
+                <div class="instrucao">
+                  <p>M1 ou mais novo, macOS 12 ou mais novo. Abra o <code>.dmg</code> e arraste o Waxtrail para <b>Aplicativos</b>.</p>
+                  <p class="aviso"><b>O app ainda não é notarizado pela Apple.</b> Tente abri-lo uma vez; depois vá a <b>Ajustes do Sistema › Privacidade e Segurança</b>, role até Segurança e clique em <b>Abrir mesmo assim</b>. O botão fica disponível por cerca de uma hora depois da tentativa.</p>
+                </div>
+                <div class="acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
+              </div>
+              <div class="pacote parada" data-pacote="macos/x64">
+                <div><h4 data-pacote-nome>macOS Intel</h4><code class="arquivo" translate="no" data-pacote-arquivo>Waxtrail-3.0.0-macos-x64.dmg</code></div>
+                <div class="instrucao">
+                  <p>Macs com processador Intel, macOS 12 ou mais novo. A instalação e a liberação na primeira abertura são as mesmas do Apple Silicon.</p>
+                </div>
+                <div class="acao" data-pacote-acao><a class="botao" href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Ver nas releases</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="miudas parada" id="conferencia">
+            <div>
+              <h3>Confira o pacote antes de abrir</h3>
+              <p>Cada release traz o <code>SHA256SUMS.txt</code> com as somas de todos os pacotes<span data-chave-minisign>, assinadas com minisign: confira a assinatura primeiro e depois o arquivo baixado</span>. No Windows, o <code>Get-FileHash</code> do PowerShell mostra a soma do arquivo.</p>
+            </div>
+            <div class="passos">
+              <div data-chave-minisign>
+                <span class="rotulo">Primeiro a assinatura das somas, com a chave pública do Waxtrail:</span>
+                <div class="cmd"><pre translate="no"><code data-minisign>minisign -Vm SHA256SUMS.txt -P RWRHH8JA44Yfssw2ywsxAHAhYSgsJN3Bi7upMesMZ+RpjOYH4BMOlCta</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
+              </div>
+              <div>
+                <span class="rotulo">Depois o arquivo, na pasta em que ele foi baixado:</span>
+                <div class="cmd"><pre translate="no"><code>sha256sum -c SHA256SUMS.txt --ignore-missing</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
+              </div>
+              <p class="em-linha" data-somas><a href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases>Somas e assinaturas nas releases</a></p>
+            </div>
+          </div>
+
+          <details class="miudas parada anterior" id="anterior">
+            <summary><span>Waxtrail <span data-versao-anterior>2.1.2</span>, a geração anterior, continua disponível</span></summary>
+            <div>
+              <p>O Waxtrail 2 é outro aplicativo, com outra biblioteca. O 3.0 não a importa nem a altera: cada geração tem a sua pasta de dados.</p>
+              <ul class="lista-anterior" data-lista-anterior>
+                <li><a href="https://github.com/iamcalegari/waxtrail-site/releases/tag/v2.1.2">Pacotes e notas da release 2.1.2</a></li>
+              </ul>
+            </div>
+          </details>
+        </section>
+
+        <section class="secao" id="primeira-abertura" aria-labelledby="primeira-titulo">
+          <header class="secao-cab parada">
+            <h2 id="primeira-titulo">O que acontece na primeira abertura</h2>
+            <p>Seis etapas, uma por tela. Nada se conecta antes de você pedir.</p>
+          </header>
+          <ol class="fiada">
+            <li class="parada"><h3><span class="n" aria-hidden="true">1</span>Privacidade</h3><div class="corpo-linha"><p>A lista exata dos endereços que o app acessa e quando.</p></div></li>
+            <li class="parada"><h3><span class="n" aria-hidden="true">2</span>Pasta de downloads</h3><div class="corpo-linha"><p>Por padrão, <code>Waxtrail</code> dentro da sua pasta de música.</p></div></li>
+            <li class="parada"><h3><span class="n" aria-hidden="true">3</span>Motor Soulseek</h3><div class="corpo-linha"><p>O slskd (cerca de 60 MB, licença AGPL-3.0) é baixado do endereço oficial, com o SHA-256 conferido antes de rodar.</p></div></li>
+            <li class="parada"><h3><span class="n" aria-hidden="true">4</span>Conta Soulseek</h3><div class="corpo-linha"><p>Crie uma exclusiva do Waxtrail ou use a sua; a senha vai para o cofre do sistema, nunca em texto puro no disco.</p></div></li>
+            <li class="parada"><h3><span class="n" aria-hidden="true">5</span>Rede e compartilhamento</h3><div class="corpo-linha"><p>A porta de escuta e o compartilhamento das pastas das playlists baixadas (quem não compartilha costuma ser recusado pelos peers).</p></div></li>
+            <li class="parada"><h3><span class="n" aria-hidden="true">6</span>Atualizações</h3><div class="corpo-linha"><p>O app só consulta se há versão nova se você disser que sim; a pergunta vem sem resposta marcada.</p></div></li>
+          </ol>
+          <figure class="captura">
+            <div class="quadro" role="group" aria-label="Captura da tela Primeiro arranque; no celular, role para os lados para ver a tela inteira">
+              <picture>
+                <source srcset="assets/capturas/primeiro-arranque-claro.webp" media="(prefers-color-scheme: light)">
+                <img src="assets/capturas/primeiro-arranque-escuro.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Primeira etapa do primeiro arranque do Waxtrail 3.0, que explica como o app trabalha e para onde ele se conecta.">
+              </picture>
+            </div>
+            <figcaption>A primeira etapa do primeiro arranque mostra a lista de endereços abaixo antes de qualquer conexão.</figcaption>
+          </figure>
+        </section>
+
+        <section class="secao" id="privacidade" aria-labelledby="privacidade-titulo">
+          <header class="secao-cab parada">
+            <h2 id="privacidade-titulo">Para onde o Waxtrail se conecta</h2>
+            <p>Sem conta no Waxtrail e sem servidor. O app só fala com os endereços desta lista, a mesma que ele mostra na primeira abertura.</p>
+          </header>
+          <dl class="destinos fiada">
+            <div class="parada">
               <dt class="prosa">Servidor do Soulseek e outros usuários (peers)</dt>
               <dd>Para buscar e baixar as faixas, e para quem baixa o que você compartilha.</dd>
             </div>
-            <div>
-              <dt><span>open.spotify.com</span> · <span>spotify.link</span> · <span>soundcloud.com</span> · <span>m.soundcloud.com</span> · <span>on.soundcloud.com</span> · <span>api-v2.soundcloud.com</span> · <span>a-v2.sndcdn.com</span></dt>
+            <div class="parada">
+              <dt translate="no"><span>open.spotify.com</span> · <span>spotify.link</span> · <span>soundcloud.com</span> · <span>m.soundcloud.com</span> · <span>on.soundcloud.com</span> · <span>api-v2.soundcloud.com</span> · <span>a-v2.sndcdn.com</span></dt>
               <dd>Quando você cola um link, para ler a playlist, e quando você toca uma prévia do SoundCloud, para pedir o endereço dela.</dd>
             </div>
-            <div>
-              <dt><span>api.deezer.com</span> · <span>musicbrainz.org</span></dt>
+            <div class="parada">
+              <dt translate="no"><span>api.deezer.com</span> · <span>musicbrainz.org</span></dt>
               <dd>Quando você cola um link, para saber a duração oficial da versão pedida.</dd>
             </div>
-            <div>
-              <dt><span>i.scdn.co</span> · <span>mosaic.scdn.co</span> · <span>p.scdn.co</span> · <span>*.sndcdn.com</span> · <span>playback.media-streaming.soundcloud.cloud</span> · <span>cdn-images.dzcdn.net</span> · <span>e-cdns-images.dzcdn.net</span> · <span>cdnt-preview.dzcdn.net</span></dt>
+            <div class="parada">
+              <dt translate="no"><span>i.scdn.co</span> · <span>mosaic.scdn.co</span> · <span>p.scdn.co</span> · <span>*.sndcdn.com</span> · <span>playback.media-streaming.soundcloud.cloud</span> · <span>cdn-images.dzcdn.net</span> · <span>e-cdns-images.dzcdn.net</span> · <span>cdnt-preview.dzcdn.net</span></dt>
               <dd>A janela busca direto as capas das playlists e faixas que aparecem na tela e as prévias que você toca; esses servidores veem o seu IP.</dd>
             </div>
-            <div>
-              <dt><span>github.com</span> · <span>api.github.com</span> · <span>objects.githubusercontent.com</span> · <span>release-assets.githubusercontent.com</span></dt>
+            <div class="parada">
+              <dt translate="no"><span>github.com</span> · <span>api.github.com</span> · <span>objects.githubusercontent.com</span> · <span>release-assets.githubusercontent.com</span></dt>
               <dd>Para baixar o motor do Soulseek nesta configuração e, se você aceitar, ver se há versão nova do Waxtrail.</dd>
             </div>
           </dl>
           <p class="sem">Sem telemetria: o Waxtrail não manda uso, erros nem estatísticas para lugar nenhum.</p>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section class="secao" id="perguntas" aria-labelledby="perguntas-titulo">
-      <div class="envoltorio perguntas-grade">
-        <header class="secao-cab">
-          <h2 id="perguntas-titulo">O que costumam perguntar</h2>
-        </header>
-        <div class="faq">
-          <details open>
-            <summary>O Waxtrail baixa música do Spotify ou do SoundCloud?</summary>
-            <div class="resposta"><p>Não. Dessas fontes ele lê só o que é público na playlist (títulos, artistas, duração, capa) e a prévia oficial, usada como referência na conferência. Os arquivos vêm do Soulseek.</p></div>
-          </details>
-          <details>
-            <summary>Preciso ter conta no Soulseek?</summary>
-            <div class="resposta"><p>Sim, a rede exige uma conta, que é gratuita. O próprio Waxtrail cria uma conta exclusiva no primeiro arranque, ou você usa a sua. Use uma senha só para isso: o protocolo do Soulseek não cifra o login.</p></div>
-          </details>
-          <details>
-            <summary>Por que a busca insiste em «Extended»?</summary>
-            <div class="resposta"><p>Para quem mixa, a versão faz parte da faixa: a Extended tem intro e saída longas; o radio edit, não. Na música de clube a Original Mix costuma ser a versão longa: sem Extended na rede, ela vale. Quando só existe a versão comum ou o radio edit, o Waxtrail baixa e deixa isso marcado na linha da faixa.</p></div>
-          </details>
-          <details>
-            <summary>O que é o slskd, que o app baixa na primeira vez?</summary>
-            <div class="resposta"><p>É o motor que conversa com a rede Soulseek: um programa separado, de outro projeto, com licença AGPL-3.0. O Waxtrail não o leva no instalador: baixa a versão oficial fixada, confere o tamanho e o SHA-256 e o executa sem modificação, só no seu computador.</p></div>
-          </details>
-          <details>
-            <summary>Onde ficam meus dados?</summary>
-            <div class="resposta"><p>Numa pasta local: <code>~/.local/share/dev.iamcalegari.waxtrail</code> no Linux, <code>%LOCALAPPDATA%\dev.iamcalegari.waxtrail</code> no Windows e <code>~/Library/Application Support/dev.iamcalegari.waxtrail</code> no macOS. As músicas vão para a pasta de downloads que você escolher. Desinstalar o app não apaga nenhuma das duas.</p></div>
-          </details>
-          <details>
-            <summary>Posso continuar usando o Waxtrail 2?</summary>
-            <div class="resposta"><p>A biblioteca do Waxtrail 2 continua onde está e o 3.0 não mexe nela. No Linux, porém, os dois usam o comando <code>waxtrail</code>: instalar o pacote do 3.0 substitui o programa do 2. Os instaladores da <span data-versao-anterior>2.1.2</span> continuam publicados.</p></div>
-          </details>
-          <details id="seguranca">
-            <summary>Como confiro um pacote e como reporto uma falha de segurança?</summary>
-            <div class="resposta">
-              <p>Cada release traz o <code>SHA256SUMS.txt</code> com as somas de todos os pacotes. <span data-chave-minisign>As somas são assinadas com minisign; confira a assinatura antes: <code data-minisign>minisign -Vm SHA256SUMS.txt</code>, com a chave pública mostrada aqui. </span>Depois, <code>sha256sum -c SHA256SUMS.txt --ignore-missing</code> confere o arquivo baixado.</p>
-              <p>Achou uma falha de segurança? Não abra uma issue pública: <a href="https://github.com/iamcalegari/waxtrail-site/security/advisories/new" data-link-seguranca rel="noopener">reporte em particular</a>. Só a última versão recebe correções.</p>
+        <section class="secao" id="seguranca" aria-labelledby="seguranca-titulo">
+          <header class="secao-cab parada">
+            <h2 id="seguranca-titulo">Segurança</h2>
+            <p>Só a última versão recebe correções.</p>
+          </header>
+          <div class="relato">
+            <p><b>Achou uma falha de segurança?</b> Não abra uma issue pública: reporte em particular pelo GitHub. A resposta vem por lá.</p>
+            <a class="botao" href="https://github.com/iamcalegari/waxtrail-site/security/advisories/new" data-link-seguranca rel="noopener">Reportar em particular</a>
+          </div>
+          <div class="fiada">
+            <div class="parada">
+              <h3>Como conferir um pacote</h3>
+              <div class="corpo-linha passos">
+                <p>Cada release traz o <code>SHA256SUMS.txt</code> com as somas de todos os pacotes. <span data-chave-minisign>As somas são assinadas com minisign; confira a assinatura antes, com a chave pública do Waxtrail:</span></p>
+                <div class="cmd" data-chave-minisign><pre translate="no"><code data-minisign>minisign -Vm SHA256SUMS.txt -P RWRHH8JA44Yfssw2ywsxAHAhYSgsJN3Bi7upMesMZ+RpjOYH4BMOlCta</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
+                <p>Depois, na pasta em que o arquivo foi baixado:</p>
+                <div class="cmd"><pre translate="no"><code>sha256sum -c SHA256SUMS.txt --ignore-missing</code></pre><button class="copiar" type="button" hidden>Copiar</button></div>
+              </div>
             </div>
-          </details>
-          <details>
-            <summary>Isso é legal?</summary>
-            <div class="resposta"><p>O Waxtrail é uma ferramenta de organização e busca; a responsabilidade pelo uso é sua, conforme as leis do seu país. Respeite os direitos dos artistas e compre as faixas que você toca.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
+          </div>
+        </section>
 
-  <footer class="rodape">
-    <div class="envoltorio rodape-in">
-      <div>
-        <a class="marca" href="#conteudo" aria-label="Waxtrail, voltar ao início"><svg class="marca-simbolo" width="30" height="19" aria-hidden="true"><use href="#sulco"/></svg><span class="marca-nome">waxtrail</span></a>
-        <p>Feito por Alan Calegari, para DJs.</p>
-      </div>
-      <ul>
-        <li><a href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases rel="noopener">Todas as releases</a></li>
-        <li><a href="https://github.com/iamcalegari/waxtrail-site/issues" data-link-problemas rel="noopener">Relatar um problema</a></li>
-        <li><a href="https://github.com/iamcalegari/waxtrail-site/security/advisories/new" data-link-seguranca rel="noopener">Reportar falha de segurança</a></li>
-      </ul>
-    </div>
-  </footer>
+        <section class="secao" id="limites" aria-labelledby="limites-titulo">
+          <header class="secao-cab parada">
+            <h2 id="limites-titulo">Os limites, ditos de frente</h2>
+          </header>
+          <dl class="fiada">
+            <div class="parada">
+              <dt>Pacotes sem assinatura paga</dt>
+              <dd>Os instaladores ainda não têm assinatura de código comercial. No Windows, o SmartScreen pede confirmação na primeira abertura; no macOS, o app não é notarizado pela Apple e precisa ser liberado em Privacidade e Segurança.</dd>
+            </div>
+            <div class="parada">
+              <dt>SoundCloud é sempre com perdas</dt>
+              <dd>O streaming do SoundCloud só entrega áudio com perdas. De lá, o Waxtrail lê a playlist e toca a prévia; o arquivo vem do Soulseek.</dd>
+            </div>
+            <div class="parada">
+              <dt>Spotify: playlist pública, 100 faixas por link</dt>
+              <dd>O Waxtrail lê só o que é público na página da playlist, e o Spotify mostra ali as primeiras 100 faixas. Para listas maiores, traga a lista inteira como CSV ou texto.</dd>
+            </div>
+            <div class="parada">
+              <dt>Nem toda faixa existe em Extended</dt>
+              <dd>Quando só existe a versão comum ou o radio edit, o Waxtrail baixa e deixa isso marcado na linha da faixa. MP3 320 só entra se você permitir.</dd>
+            </div>
+            <div class="parada">
+              <dt>Quem baixa também compartilha</dt>
+              <dd>No Soulseek, quem não compartilha costuma ser recusado pelos peers. O Waxtrail compartilha as pastas das playlists baixadas, nada além delas.</dd>
+            </div>
+            <div class="parada">
+              <dt>O login do Soulseek não é cifrado</dt>
+              <dd>É do protocolo da rede. Use uma senha só para isso.</dd>
+            </div>
+            <div class="parada">
+              <dt>O motor Soulseek é de outro projeto</dt>
+              <dd>O slskd (licença AGPL-3.0, cerca de 60 MB) não vem no instalador: o app baixa a versão oficial fixada no primeiro arranque, com a sua confirmação, e a executa sem modificação.</dd>
+            </div>
+            <div class="parada">
+              <dt>Só para computador</dt>
+              <dd>Linux x86_64, Windows 10 e 11 de 64 bits e macOS 12 ou mais novo. Não há versão para Android nem para iOS.</dd>
+            </div>
+          </dl>
+        </section>
 
-  <script src="releases.js?v=3.0.0"></script>
-  <script src="app.js?v=3.0.0"></script>
-  <script src="fila-demo.js?v=3.0.0"></script>
+        <section class="secao" id="perguntas" aria-labelledby="perguntas-titulo">
+          <header class="secao-cab parada">
+            <h2 id="perguntas-titulo">O que costumam perguntar</h2>
+          </header>
+          <dl class="fiada">
+            <div class="parada">
+              <dt>O Waxtrail baixa música do Spotify ou do SoundCloud?</dt>
+              <dd>Não. Dessas fontes ele lê só o que é público na playlist (títulos, artistas, duração, capa) e a prévia oficial, usada como referência na conferência. Os arquivos vêm do Soulseek.</dd>
+            </div>
+            <div class="parada">
+              <dt>Preciso ter conta no Soulseek?</dt>
+              <dd>Sim, a rede exige uma conta, que é gratuita. O próprio Waxtrail cria uma conta exclusiva no primeiro arranque, ou você usa a sua.</dd>
+            </div>
+            <div class="parada">
+              <dt>Por que a busca insiste em «Extended»?</dt>
+              <dd>Para quem mixa, a versão faz parte da faixa: a Extended tem intro e saída longas; o radio edit, não. Na música de clube a Original Mix costuma ser a versão longa: sem Extended na rede, ela vale.</dd>
+            </div>
+            <div class="parada">
+              <dt>O que é o slskd, que o app baixa na primeira vez?</dt>
+              <dd>É o motor que conversa com a rede Soulseek: um programa separado, de outro projeto. O Waxtrail confere o tamanho e o SHA-256 antes de executá-lo, e ele roda só no seu computador.</dd>
+            </div>
+            <div class="parada">
+              <dt>Onde ficam meus dados?</dt>
+              <dd>Numa pasta local: <code>~/.local/share/dev.iamcalegari.waxtrail</code> no Linux, <code>%LOCALAPPDATA%\dev.iamcalegari.waxtrail</code> no Windows e <code>~/Library/Application Support/dev.iamcalegari.waxtrail</code> no macOS. As músicas vão para a pasta de downloads que você escolher. Desinstalar o app não apaga nenhuma das duas.</dd>
+            </div>
+            <div class="parada">
+              <dt>Posso continuar usando o Waxtrail 2?</dt>
+              <dd>A biblioteca do Waxtrail 2 continua onde está e o 3.0 não mexe nela. No Linux, porém, os dois usam o comando <code>waxtrail</code>: instalar o pacote do 3.0 substitui o programa do 2. Os instaladores da <span data-versao-anterior>2.1.2</span> <a href="#anterior">continuam publicados</a>.</dd>
+            </div>
+            <div class="parada">
+              <dt>Isso é legal?</dt>
+              <dd>O Waxtrail é uma ferramenta de organização e busca; a responsabilidade pelo uso é sua, conforme as leis do seu país. Respeite os direitos dos artistas e compre as faixas que você toca.</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+    </main>
+
+    <footer class="fim" id="fim">
+      <svg class="sulco sulco-fim sulco-fim-d" viewBox="0 0 90 29.5" aria-hidden="true" focusable="false">
+        <path class="traco" pathLength="1" d="M 8.75 -1 L 8.75 18 A 8 8 0 0 0 24.75 18 L 24.75 12 A 2 2 0 0 1 28.75 12 L 28.75 18 A 8 8 0 0 0 44.75 18 L 44.75 3"/>
+      </svg>
+      <svg class="sulco sulco-fim sulco-fim-m" viewBox="0 0 46 29.5" aria-hidden="true" focusable="false">
+        <path class="traco" pathLength="1" d="M 5.7 -1 L 5.7 18 A 8 8 0 0 0 21.7 18 L 21.7 12 A 2 2 0 0 1 25.7 12 L 25.7 18 A 8 8 0 0 0 41.7 18 L 41.7 3"/>
+      </svg>
+      <div class="rodape">
+        <p class="assina">Feito por Alan Calegari, para DJs.</p>
+        <ul>
+          <li><a href="https://github.com/iamcalegari/waxtrail-site/releases" data-link-releases rel="noopener">Todas as releases</a></li>
+          <li><a href="https://github.com/iamcalegari/waxtrail-site/issues" data-link-problemas rel="noopener">Relatar um problema</a></li>
+          <li><a href="https://github.com/iamcalegari/waxtrail-site/security/advisories/new" data-link-seguranca rel="noopener">Reportar falha de segurança</a></li>
+        </ul>
+        <small>Playlist, faixas e artistas desta página são de exemplo.</small>
+      </div>
+    </footer>
+  </div>
+
+  <script src="releases.js?v=3.0.0-2"></script>
+  <script src="app.js?v=3.0.0-2"></script>
+  <script src="trilha.js?v=3.0.0-2"></script>
+  <script src="fila-demo.js?v=3.0.0-2"></script>
 </body>
 </html>
